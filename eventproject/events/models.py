@@ -3,11 +3,18 @@ from person.models import UserProfile
 
 
 class Restrictions(models.Model):
+
+    """Event Restrictions"""
+
     name = models.CharField(max_length=50)
     logo = models.ImageField(
         upload_to='static/images/restriction_logo',
         null=True, blank=True)
     description = models.CharField(max_length=1000)
+
+    # edited
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
 class Event(models.Model):
@@ -49,11 +56,15 @@ class Event(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    # Show organizers in a string
     def get_organizers(self):
         return ' , '.join([x.name for x in self.organizers.all()])
 
 
 class Tier(models.Model):
+
+    """Peldge levels"""
+
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=1000)
@@ -62,15 +73,27 @@ class Tier(models.Model):
         null=True, blank=True)
     event = models.ForeignKey(Event)
 
+    # edited
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
 
 class UserFundsEvent(models.Model):
+
+    """What Users funds what a event and with what tire"""
+
     event = models.ForeignKey(Event)
     user = models.ForeignKey(UserProfile)
     tier = models.ForeignKey(Tier)
     went = models.BooleanField(default=False)
 
+    # edited
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
 
 class EventPhoto(models.Model):
+
     user = models.ForeignKey(UserProfile)
     event = models.ForeignKey(Event)
     caption = models.ImageField(
@@ -79,6 +102,10 @@ class EventPhoto(models.Model):
     valid = models.BooleanField(default=True)
     positive_votes = models.IntegerField()
     negative_votes = models.IntegerField()
+
+    # edited
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     def get_logo(self):
         try:
@@ -91,18 +118,33 @@ class EventPhoto(models.Model):
 
 
 class UserVotesPhoto(models.Model):
+
     user = models.ForeignKey(UserProfile)
     photo = models.ForeignKey(EventPhoto)
     positive_vote = models.BooleanField(default=False)
 
+    # edited
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
 
 class EventComment(models.Model):
+
     user = models.ForeignKey(UserProfile)
     event = models.ForeignKey(Event)
     comment = models.CharField(max_length=150)
 
+    # edited
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
 
 class UserVotesComment(models.Model):
+
     user = models.ForeignKey(UserProfile)
     comment = models.ForeignKey(EventComment)
     positive_vote = models.BooleanField(default=False)
+
+    # edited
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
