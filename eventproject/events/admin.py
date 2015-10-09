@@ -1,3 +1,6 @@
 from django.contrib import admin
+from models import Event, Restrictions, EventPhoto
 
-# Register your models here.
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'end_date', 'get_organizers', 'city')
