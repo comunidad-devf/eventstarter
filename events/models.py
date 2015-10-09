@@ -12,6 +12,11 @@ class Restriction(models.Model):
     logo = models.ImageField(null=True, blank=True, upload_to="event_media")
     description = models.TextField()
 
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+
 class Event(models.Model):
 
     """Event model."""
@@ -49,6 +54,10 @@ class Event(models.Model):
     achieved_goal = models.BooleanField(default=False)
     event_completed = models.BooleanField(default=False)
 
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
 
 class EventTier(models.Model):
 
@@ -62,6 +71,10 @@ class EventTier(models.Model):
     price = models.DecimalField(max_digits=19, decimal_places=10)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="event_media")
+
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
 class EventPhoto(models.Model):
@@ -78,6 +91,10 @@ class EventPhoto(models.Model):
     positive_votes = models.IntegerField(default=0)
     negative_votes = models.IntegerField(default=0)
 
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
 
 class EventComment(models.Model):
 
@@ -92,6 +109,10 @@ class EventComment(models.Model):
     positive_votes = models.IntegerField(default=0)
     negative_votes = models.IntegerField(default=0)
 
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
 
 class UserVotesPhoto(models.Model):
 
@@ -104,6 +125,11 @@ class UserVotesPhoto(models.Model):
     photo = models.ForeignKey(EventPhoto)
     positive_vote = models.BooleanField(default=False)
 
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+
 class UserVotesComment(models.Model):
 
     """User Vote on Comment.
@@ -114,3 +140,7 @@ class UserVotesComment(models.Model):
     user = models.ForeignKey(UserProfile)
     comment = models.ForeignKey(EventComment)
     positive_vote = models.BooleanField(default=False)
+
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)

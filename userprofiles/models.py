@@ -17,3 +17,7 @@ class UserProfile(models.Model):
     facebook_url = models.URLField(null=True, blank=True)
     twitter_url = models.URLField(null=True, blank=True)
     fraudulent = models.BooleanField(default=False)
+
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
