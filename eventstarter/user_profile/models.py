@@ -16,5 +16,5 @@ class UserProfile(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {} {}'.format(self.user, self.avatar, self.created,
-                                       self.modified)
+        return '{} {} {} {}'.format(self.user, self.avatar, self.created,
+                                    self.modified,)
