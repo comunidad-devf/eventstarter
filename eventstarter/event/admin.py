@@ -10,4 +10,5 @@ class RestrictionsAdmin(admin.ModelAdmin):
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('get_organizers',)
+    list_display = ('name', 'start_date', 'end_date', 'due_date', 'goal',
+    	            'goal_raised', 'event_realized')

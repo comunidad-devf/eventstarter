@@ -4,7 +4,7 @@ from user_profile.models import UserProfile
 
 class Restriction(models.Model):
     name = models.CharField(max_length=255)
-    logo = models.ImageField(upload_to="logoEvent", null=True)
+    logo = models.ImageField(upload_to="logoEvent", null=True, blank=True)
     description = models.CharField(max_length=255)
 
     def __unicode__(self):
@@ -17,7 +17,7 @@ class Event(models.Model):
     organizers = models.ManyToManyField(UserProfile)
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    image = models.ImageField(upload_to="eventPhoto")
+    image = models.ImageField(upload_to="eventPhoto", null=True, blank=True)
     place_latitude = models.CharField(max_length=255, null=True, blank=True)
     place_longitude = models.CharField(max_length=255, null=True, blank=True)
     reuirements = models.CharField(max_length=255, null=True, blank=True)
@@ -39,15 +39,26 @@ class Event(models.Model):
     zip_code = models.CharField(max_length=10)
     place_name = models.CharField(max_length=255, null=True, blank=True)
 
-    def get_organizers(self, obj):
-        return "\n".join([o.organizer for o in obj.organizers.all()])
+    def __unicode__(self):
+        return '{} {} {} {} {} {} {} {}'.format(self.name,
+                                                self.start_date,
+                                                self.end_date,
+                                                self.due_date,
+                                                self.goal,
+                                                self.progress,
+                                                self.goal_raised,
+                                                self.event_realized)
+
+    def get_organizers(self):
+        return UserProfile.objects.all()
 
 
 class Tier(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True)
     price = models.FloatField()
     description = models.CharField(max_length=255)
-    tier_image = models.ImageField(upload_to="tierImages", null=True)
+    tier_image = models.ImageField(upload_to="tierImages", null=True,
+                                   blank=True)
     event = models.ForeignKey(Event)
 
     def __unicode__(self):
