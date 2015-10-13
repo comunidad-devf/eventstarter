@@ -16,6 +16,10 @@ class Restriction(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return '{} {} {} {}'.format(self.name, self.logo, self.created,
+                                    self.modified)
+
 
 class Event(models.Model):
 
@@ -58,6 +62,15 @@ class Event(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return '{} {} {} {} {} {} {} {}'.format(self.name,
+                                                self.start_date,
+                                                self.end_date,
+                                                self.due_date,
+                                                self.goal,
+                                                self.achieved_goal,
+                                                self.event_completed)
+
 
 class EventTier(models.Model):
 
@@ -75,6 +88,14 @@ class EventTier(models.Model):
     # Meta Data
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return '{} {} {} {} {} {}'.format(self.name,
+                                          self.event,
+                                          self.price,
+                                          self.image,
+                                          self.created,
+                                          self.modified)
 
 
 class EventPhoto(models.Model):
@@ -95,6 +116,13 @@ class EventPhoto(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return '{} {} {} {} {}'.format(self.user,
+                                       self.event,
+                                       self.image,
+                                       self.positive_votes,
+                                       self.negative_votes)
+
 
 class EventComment(models.Model):
 
@@ -113,6 +141,12 @@ class EventComment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return '{} {} {} {}'.format(self.name,
+                                    self.event,
+                                    self.positive_vote,
+                                    self.negative_votes)
+
 
 class UserVotesPhoto(models.Model):
 
@@ -129,6 +163,12 @@ class UserVotesPhoto(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return '{} {} {} {}'.format(self.user,
+                                    self.positive_vote,
+                                    self.created,
+                                    self.modified)
+
 
 class UserVotesComment(models.Model):
 
@@ -144,3 +184,9 @@ class UserVotesComment(models.Model):
     # Meta Data
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return '{} {} {} {}'.format(self.user,
+                                    self.positive_vote,
+                                    self.created,
+                                    self.modified)
