@@ -9,7 +9,7 @@ class UserProfile(models.Model):
     """User Profile model."""
 
     user = models.ForeignKey(User)
-    avatar = models.URLField()
+    avatar = models.URLField(null=True, blank=True)
     biography = models.TextField(null=True, blank=True)
     birthday = models.DateField()
     phone = models.CharField(max_length=15, null=True, blank=True)
