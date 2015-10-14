@@ -1,0 +1,10 @@
+Django==1.8.5
+oauthlib==1.0.3
+Pillow==3.0.0
+PyJWT==1.4.0
+python-openid==2.2.5
+python-social-auth==0.2.13
+requests==2.8.1
+requests-oauthlib==0.5.0
+six==1.10.0
+wheel==0.24.0

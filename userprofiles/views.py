@@ -9,3 +9,8 @@ def user_logout(request):
     """Log out the user session."""
     logout(request)
     return redirect(reverse('events:home'))
+
+
+def user_profile(request, username):
+    """User profile view."""
+    return render(request, 'userprofiles/profile.html', {})
