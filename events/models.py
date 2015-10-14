@@ -68,6 +68,8 @@ class Event(models.Model):
     location_street = models.CharField(max_length=255)
     location_number = models.CharField(max_length=20)
     location_zip_code = models.CharField(max_length=20)
+    location_suburb = models.CharField(max_length=255)#colonia
+    location_neighborhood = models.CharField(max_length=255)# delegacion
 
     # Finished event data
     attendances = models.IntegerField(default=0)
