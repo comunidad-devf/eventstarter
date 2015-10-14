@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Event Starter{% endblock %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <p>
+            Welcome back {{ user.first_name }}! |
+            <a href="/logout">Logout</a>
+        </p>
+        <p>
+            <a href="{% url 'userprofiles:profile' user.username %}">
+                Go to my profile
+            </a>
+        </p>
+    {% else %}
+        <p>
+            <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+            Enter with Facebook
+            </a>
+        </p>
+    {% endif %}
+{% endblock %}
