@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User)
     avatar = models.URLField(null=True, blank=True)
     biography = models.TextField(null=True, blank=True)
-    birthday = models.DateField()
+    birthday = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=15, null=True, blank=True)
     score = models.IntegerField(default=0)
     facebook_url = models.URLField(null=True, blank=True)
