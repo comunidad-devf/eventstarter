@@ -8,6 +8,15 @@ class EventForm(forms.ModelForm):
         fields = ['name',
                   'description',
                   'requirements',
-                  'restrictions',
-                  'algo'
-                ]
+                  'video_url',
+                  'minimum_attendance',
+                  'maximum_attendance',
+                  'start_date',
+                  'end_date',
+                  'due_date', ]
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ['location_name']

@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from userprofiles.models import UserProfile
 from django.http import HttpResponse
-from forms import EventForm
+from forms import EventForm, AddressForm
 
 
 def events_home(request):
@@ -27,6 +27,10 @@ def events_home(request):
             user_profile.save()
     return render(request, 'events/home.html', {})
 
+
 def create_event(request):
-	form = EventForm
-	return render(request, 'events/create.html', {'form':form})
+    form = EventForm
+    address = AddressForm
+    return render(request, 'events/create.html', {
+                           'eventform': form,
+                           'addressForm': address})
