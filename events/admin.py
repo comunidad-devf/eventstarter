@@ -1,6 +1,6 @@
 from django.contrib import admin
 from events.models import Restriction, Event, EventTier, EventPhoto, \
-    EventComment, UserVotesPhoto, UserVotesComment
+    EventComment, UserVotesPhoto, UserVotesComment, EventCategory
 
 
 @admin.register(Restriction)
@@ -61,5 +61,12 @@ class UserVotesPhotoAdmin(admin.ModelAdmin):
 class UserVotesCommentAdmin(admin.ModelAdmin):
     list_display = ('user',
                     'positive_vote',
+                    'created',
+                    'modified',)
+
+
+@admin.register(EventCategory)
+class EventCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',
                     'created',
                     'modified',)
