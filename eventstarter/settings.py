@@ -27,7 +27,7 @@ INSTALLED_APPS = (
     'events',
     'userprofiles',
 
-    # 'social.apps.django_app.default',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (

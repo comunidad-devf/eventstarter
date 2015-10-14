@@ -1,6 +1,8 @@
 """Events views."""
 from django.shortcuts import render
 from userprofiles.models import UserProfile
+from django.http import HttpResponse
+from forms import EventForm
 
 
 def events_home(request):
@@ -24,3 +26,7 @@ def events_home(request):
             user_profile.facebook_url = 'https://www.facebook.com/app_scoped_user_id/%s/' % facebook_id
             user_profile.save()
     return render(request, 'events/home.html', {})
+
+def create_event(request):
+	form = EventForm
+	return render(request, 'events/create.html', {'form':form})
