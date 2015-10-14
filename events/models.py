@@ -17,8 +17,23 @@ class Restriction(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
+        """Return the name, logo, created time and modified time."""
         return '{} {} {} {}'.format(self.name, self.logo, self.created,
                                     self.modified)
+
+
+class EventCategory(models.Model):
+
+    """Event Category Model."""
+
+    name = models.CharField(max_length=50)
+
+    # Meta Data
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return '{}'.format(self.name)
 
 
 class Event(models.Model):
@@ -34,6 +49,7 @@ class Event(models.Model):
     minimum_attendance = models.IntegerField(default=0)
     maximum_attendance = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
+    categories = models.ManyToManyField(EventCategory)
 
     # Date
     start_date = models.DateTimeField()
