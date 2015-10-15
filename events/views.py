@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from userprofiles.models import UserProfile
 from django.shortcuts import get_object_or_404
-from events.models import Event
+from events.models import Event, EventTier
 import random
 # from django.http import HttpResponse
 
@@ -54,7 +54,9 @@ def event(request, event):
     """
 
     this_event = get_object_or_404(Event, pk=event)
+    this_tier = EventTier.objects.filter(event=this_event)
     context = {
         'event': this_event,
+        'tier': this_tier
     }
     return render(request, 'events/event.html', context)
