@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static from staticfiles %}
     <meta charset="UTF-8" />
     <title>{% block title%}{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <link rel="stylesheet" href="{% static "css/home.css" %}" />
     {% block head %}{% endblock %}
 </head>
 <body>
