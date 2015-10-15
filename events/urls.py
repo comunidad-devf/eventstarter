@@ -2,7 +2,7 @@
 from django.conf.urls import include, url
 
 urlpatterns = [
-    url(r'^events_home/$',
+    url(r'^$',
         'events.views.events_home',
         name='home'),
 
