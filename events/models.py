@@ -79,6 +79,7 @@ class Event(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
+
         return '{} {} {} {} {} {} {} '.format(self.name,
                                               self.start_date,
                                               self.end_date,

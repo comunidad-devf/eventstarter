@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <header>
+        <figure> <img src="fondo.jpg" alt="imagenfondo"/> </figure>     
+    </header>
+    <section class="container">
+        <section class="row">
+            <div class= "col-md-6">
+                <h1> {{event.name}} </h1>
+            </div>
+            <div class= "col-md-6">
+                <p> Fecha límite:<p> <!-- cambie este titulo, leer proximo comment -->
+                <p> {{event.due_date}} </p> <!-- necesitamos un AJAX script aqui para que salga como countdown -->
+            </div>
+        </section>
+    <section class="row">
+        <figure class= "col-md-6">
+            <img src="image_evento.jpg" alt="imagenevento"/>
+        </figure>
+        <section class= "col-md-6">
+            <article>
+                <h2>Necesita:</h2>
+                <p>{{ event.goal }}</p>
+                <p>MXN.</p>
+            </article>
+            <article>
+                <h2>Recaudado:</h2>
+                <p>{{ event.progress }}</p>
+                <p>MXN.</p>
+            </article>
+        </section>      
+    </section>
+    <section class="row">
+        <article class= "col-md-4">
+            <h4>Organizadores</h4>
+            <ul>
+                {% for organizer in event.organizers.all %}
+                <li>{{ organizer.user }}</li>
+                {% endfor %}
+            </ul> 
+        </article>
+        <article class= "col-md-4">
+            <h4>Ranking del organizador</h4> <!-- ranking del organizador mas bien no? -->
+            <ul>
+                {% for organizer in event.organizers.all %}
+                <li>{{ organizer.score }}</li>
+                {% endfor %}
+            </ul> 
+        </article>
+        <article class= "col-md-4">
+            <h4>Zona del evento</h4>
+            <p> {{ event.location_city }} </p>
+        </article>
+    </section>
+    <section class= "row">
+        <article class= "col-md-6">
+                <div>
+                    <h2> Fecha del evento: {{ event.start_date }} a  {{ event.end_date }} </h2>
+                    <p> Chocolate bar powder sweet roll gingerbread fruitcake bear claw powder sweet roll. Oat cake halvah jujubes. Tart candy canes oat cake. Sesame snaps cake croissant danish halvah jelly beans. Gummi bears candy canes croissant toffee cotton candy marzipan wafer. Cake chupa chups lollipop wafer.</p>
+                </div>
+                <div>
+                    <h2> Descripción </h2>
+                    <p> {{ event.description }} </p>
+                </div>
+                <div>
+                    <h2> Requerimientos </h2>
+                    <p> {{ event.requirements }} </p>
+                </div>
+                <div>
+                    <h2> Restricciones </h2>
+                    <ul>
+                        {% for restriction in event.restrictions.all %}
+                        <li>{{ restriction.name }}: {{ restriction.description }}</li>
+                        {% endfor %}
+                    </ul> 
+                </div>
+        </article>
+        <article class= "col-md-6">
+            <div>            
+                {% for tier in event.eventtier.all %}
+                <h2>{{tier.name}}<h2>  
+                <p>{{tier.price}}</p>
+                <p>{{tier.description}}</p>                
+                {% endfor %}
+            </div>
+
+
+
+            <div>
+                <h2>Primera recompensa<h2>  
+                <p>$250.00</p>
+                <p> Sólo incluye un pase al evento</p>
+            </div>
+            <div>
+                <h2>Segunda recompensa<h2>  
+                <p>$250.00</p>
+                <p> Sólo incluye un pase al evento</p>
+            </div>
+            <div>
+                <h2>Tercera recompensa<h2>  
+                <p>$250.00</p>
+                <p> Sólo incluye un pase al evento</p>
+            </div>  
+        </article>
+    </section>
+    </section>
+    <footer>
+    
+    </footer>
+{% endblock %}
+</html>
