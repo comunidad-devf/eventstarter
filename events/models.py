@@ -81,13 +81,13 @@ class Event(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {} {} {} {}'.format(self.name,
-                                             self.start_date,
-                                             self.end_date,
-                                             self.due_date,
-                                             self.goal,
-                                             self.achieved_goal,
-                                             self.event_completed)
+        return '{} {} {} {} {} {} {} '.format(self.name,
+                                              self.start_date,
+                                              self.end_date,
+                                              self.due_date,
+                                              self.goal,
+                                              self.achieved_goal,
+                                              self.event_completed,)
 
 
 class EventTier(models.Model):
