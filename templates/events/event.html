@@ -10,8 +10,8 @@
                 <h1> {{event.name}} </h1>
             </div>
             <div class= "col-md-6">
-                <p> Tiempo Restante:<p>
-                <p> {{event.due_date}} </p> <!-- tendre que poner logica para restar aqui -->
+                <p> Fecha límite:<p> <!-- cambie este titulo, leer proximo comment -->
+                <p> {{event.due_date}} </p> <!-- necesitamos un AJAX script aqui para que salga como countdown -->
             </div>
         </section>
     <section class="row">
@@ -33,12 +33,20 @@
     </section>
     <section class="row">
         <article class= "col-md-4">
-            <h4>Organizador</h4>
-            <p>{{ event.organizers.name }}</p>
+            <h4>Organizadores</h4>
+            <ul>
+                {% for organizer in event.organizers.all %}
+                <li>{{ organizer.user }}</li>
+                {% endfor %}
+            </ul> 
         </article>
         <article class= "col-md-4">
-            <h4>Ranking del evento</h4> <!-- ranking del organizador mas bien no? -->
-            <p>{{ event.organizers.score }}</p>
+            <h4>Ranking del organizador</h4> <!-- ranking del organizador mas bien no? -->
+            <ul>
+                {% for organizer in event.organizers.all %}
+                <li>{{ organizer.score }}</li>
+                {% endfor %}
+            </ul> 
         </article>
         <article class= "col-md-4">
             <h4>Zona del evento</h4>
@@ -61,7 +69,11 @@
                 </div>
                 <div>
                     <h2> Restricciones </h2>
-                    <p> {{ event.restrictions }} </p>
+                    <ul>
+                        {% for restriction in event.restrictions.all %}
+                        <li>{{ restriction.name }}: {{ restriction.description }}</li>
+                        {% endfor %}
+                    </ul> 
                 </div>
         </article>
         <article class= "col-md-6">
