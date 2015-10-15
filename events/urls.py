@@ -5,4 +5,6 @@ urlpatterns = [
     url(r'^$', 'events.views.events_home', name='home'),
     url(r'^crear_evento/$', 'events.views.create_event',
         name='create_event'),
+    url(r'^evento/$', 'events.views.event',
+        name='event'),
 ]

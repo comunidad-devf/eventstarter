@@ -3,8 +3,61 @@
 {% block title %}Create Event{% endblock %}
 
 {% block body %}
-   {{ eventform }}
+<form id="new_event" name="new_event" method="POST" action="">
+<h2>Event info</h2>
+{% csrf_token %}
+<label for="id_event_name">Name:</label>
+<input id="id_event_name" maxlength="140" name="event_name">
+<label for="id_video_url">Video url:</label><input id="id_video_url" maxlength="200" name="video_url" type="url" />
+<label for="id_start_date">Start date:</label><input id="id_start_date" name="start_date" type="text" />
+<label for="id_end_date">End date:</label><input id="id_end_date" name="end_date" type="text" />
+<label for="id_due_date">Due date:</label><input id="id_due_date" name="due_date" type="text" />
+<label for="id_goal">Goal:</label><input id="id_goal" name="goal" step="1e-10" type="number" />
+<label for="id_progress">progress:</label><input id="id_progress" name="progress" step="1e-10" type="number" />
+<label for="id_event_description">Description:</label><textarea cols="40" id="id_event_description" name="event_description" rows="10">
+</textarea>
 
-   {{ addressForm }}
+<h2> Address</h2>
+        <label for="id_location_street">Location street:</label>
+        <input id="id_location_street" maxlength="255" name="location_street" type="text" />
+        <label for="id_location_number">Location number:</label>
+        <input id="id_location_number" maxlength="20" name="location_number" type="text" />
+        <label for="id_location_suburb">Location suburb:</label>
+        <input id="id_location_suburb" maxlength="255" name="location_suburb" type="text" />
+        <label for="id_location_neighborhood">Location neighborhood:</label>
+        <input id="id_location_neighborhood" maxlength="255" name="location_neighborhood" type="text" />
+        <label for="id_location_zip_code">Location zip code:</label>
+        <input id="id_location_zip_code" maxlength="20" name="location_zip_code" type="text" />
+        <label for="id_location_city">Location city:</label>
+        <input id="id_location_city" maxlength="255" name="location_city" type="text" />
+
+        <h2>Attendances</h2>
+        <label for="id_minimum_attendance">Minimum attendance:</label>
+        <input id="id_minimum_attendance" name="minimum_attendance" type="number" value="0" />
+        <label for="id_maximum_attendance">Maximum attendance:</label>
+        <input id="id_maximum_attendance" name="maximum_attendance" type="number" value="0" />
+
+        <h2>Category</h2>
+        <label for="id_category_name">Name:</label>
+        <input id="id_category_name" maxlength="50" name="category_name" type="text" />
+
+        <h2>Restrictions</h2>
+        <label for="id_restriction_name">Name:</label>
+        <input id="id_restriction_name" maxlength="50" name="restriction_name" type="text" />
+        <label for="id_restriction_description">Description:</label>
+        <textarea cols="40" id="id_restriction_description" name="restriction_description" rows="10">
+        </textarea>
+
+        <h2>Tiers</h2>
+        <label for="id_tier_name">Name:</label>
+        <input id="id_tier_name" maxlength="140" name="tier_name" type="text" />
+        <label for="id_tier_price">Price:</label>
+        <input id="id_tier_price" name="tier_price" step="1e-10" type="number" />
+        <label for="id_tier_description">Description:</label>
+        <textarea cols="40" id="id_tier_description" name="tier_description" rows="10">
+        </textarea>
+        <input type="submit" value="Create event">
+
+</form>
 {% endblock %}
 	

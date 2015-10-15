@@ -68,8 +68,8 @@ class Event(models.Model):
     location_street = models.CharField(max_length=255)
     location_number = models.CharField(max_length=20)
     location_zip_code = models.CharField(max_length=20)
-    location_suburb = models.CharField(max_length=255)#colonia
-    location_neighborhood = models.CharField(max_length=255)# delegacion
+    location_suburb = models.CharField(max_length=255, default=True)#colonia
+    location_neighborhood = models.CharField(max_length=255, default=True)# delegacion
 
     # Finished event data
     attendances = models.IntegerField(default=0)
@@ -81,13 +81,13 @@ class Event(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {} {} {} {} {}'.format(self.name,
-                                                self.start_date,
-                                                self.end_date,
-                                                self.due_date,
-                                                self.goal,
-                                                self.achieved_goal,
-                                                self.event_completed)
+        return '{} {} {} {} {} {} {}'.format(self.name,
+                                             self.start_date,
+                                             self.end_date,
+                                             self.due_date,
+                                             self.goal,
+                                             self.achieved_goal,
+                                             self.event_completed)
 
 
 class EventTier(models.Model):
