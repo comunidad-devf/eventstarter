@@ -1,6 +1,8 @@
 """Events views."""
 from django.shortcuts import render
 from userprofiles.models import UserProfile
+from events.models import Event
+import random
 
 
 def events_home(request):
@@ -9,6 +11,22 @@ def events_home(request):
     This view renders the main page content and have the main
     task of creating a User Profile entity.
     """
+    events = Event.objects.all()
+    if (len(events) > 6):
+        events = random.sample(Event.objects.all(), 6)
+    else:
+        events = random.sample(Event.objects.all(), len(events))
+
+    top_score = Event.objects.all()
+    if (len(events) > 2):
+        top_score = Event.objects.all().order_by('score')[::-1][:2]
+    else:
+        top_score = Event.objects.all().order_by('score')[::-1]
+
+    context = {
+        'events': events,
+        'top_scores': top_score
+    }
     # Check if user session has an User Profile entity.
     if request.user.is_authenticated():
         try:
@@ -23,4 +41,4 @@ def events_home(request):
             user_profile.avatar = picture_url
             user_profile.facebook_url = 'https://www.facebook.com/app_scoped_user_id/%s/' % facebook_id
             user_profile.save()
-    return render(request, 'events/home.html', {})
+    return render(request, 'events/home.html', context)
