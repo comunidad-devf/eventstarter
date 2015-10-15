@@ -19,7 +19,8 @@ class EventAdmin(admin.ModelAdmin):
                     'due_date',
                     'goal',
                     'achieved_goal',
-                    'event_completed',)
+                    'event_completed',
+                    'score',)
 
 
 @admin.register(EventTier)

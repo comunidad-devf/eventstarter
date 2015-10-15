@@ -20,4 +20,13 @@
             </a>
         </p>
     {% endif %}
+    <h3>Evento</h3>
+    {% for event in events %}
+        <p>{{ event }}</p>
+    {% endfor %}
+
+    <h3>top</h3>
+    {% for top_score in top_scores %}
+        <p>{{ top_score.score }}</p>
+    {% endfor %}
 {% endblock %}
