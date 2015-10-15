@@ -21,3 +21,15 @@ class UserProfile(models.Model):
     # Meta Data
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return '{} {} {} {} {} {} {} {} {}'.format(self.user,
+                                                  self.avatar,
+                                                  self.biography,
+                                                  self.birthday,
+                                                  self.phone,
+                                                  self.score,
+                                                  self.facebook_url,
+                                                  self.twitter_url,
+                                                  self.fraudulent,
+                                                  )

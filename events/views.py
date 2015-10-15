@@ -1,6 +1,9 @@
 """Events views."""
 from django.shortcuts import render
 from userprofiles.models import UserProfile
+from django.shortcuts import get_object_or_404
+from events.models import Event
+from django.http import HttpResponse
 
 
 def events_home(request):
@@ -24,3 +27,17 @@ def events_home(request):
             user_profile.facebook_url = 'https://www.facebook.com/app_scoped_user_id/%s/' % facebook_id
             user_profile.save()
     return render(request, 'events/home.html', {})
+
+
+def event(request, event):
+    """ Event Page.
+    This view renders the corresponding event's content, funding
+    tiers, etc.
+    The commented lines are for testing DB items only
+    """
+
+    this_event = get_object_or_404(Event, pk=event)
+    context = {
+        'event': this_event,
+    }
+    return render(request, 'events/event.html', context)
