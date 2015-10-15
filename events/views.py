@@ -11,17 +11,17 @@ def events_home(request):
     This view renders the main page content and have the main
     task of creating a User Profile entity.
     """
-    events = Event.objects.all()
+    events = Event.objects.filter(event_completed = False)
     if (len(events) > 6):
-        events = random.sample(Event.objects.all(), 6)
+        events = random.sample(events, 6)
     else:
-        events = random.sample(Event.objects.all(), len(events))
+        events = random.sample(events, len(events))
 
-    top_score = Event.objects.all()
+    top_score = Event.objects.all().order_by('score')
     if (len(events) > 2):
-        top_score = Event.objects.all().order_by('score')[::-1][:2]
+        top_score = top_score[::-1][:2]
     else:
-        top_score = Event.objects.all().order_by('score')[::-1]
+        top_score = top_score[::-1]
 
     context = {
         'events': events,
