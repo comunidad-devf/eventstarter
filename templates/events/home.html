@@ -67,16 +67,16 @@
                 </div>
                 <div class="line">
                     <div>
-                        <h5>{{event.progress}}</h5>
+                        <h5>${{event.progress}}</h5>
                         <h6>Recaudado</h6>
                     </div>
                     <div>
-                        <h5>{{event.goal}}</h5>
+                        <h5>${{event.goal}}</h5>
                         <h6>Meta</h6>
                     </div>
                     <div>
-                        <h5>{{event.end_date}}</h5>
-                        <h6>Días restantes</h6>
+                        <h5 id="dias"></h5>
+                        <h6>Fecha límite</h6>
                     </div>
                 </div>
             </div>
@@ -92,22 +92,22 @@
                     <img src={% static "img/imgtop.jpg" %} alt="">
                 </figure>
                 <div class="centro">
-                    <h4>Poll Party, Miguel</h4>
-                    <p>En esta fiesta Miguel se puso bien loco y nadie lo podía parar, se desvistió y se lanzó a la alberca</p>
+                    <h4>{{top_score.name}}</h4>
+                    <p>{{top_score.description}}</p>
                     <div class=line>
                         <div>
-                            <h5>Ranking del evento</h5>
+                            <h5>Ranking</h5>
                             <div class=line>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
                             </div>
                         </div>
                         <div>
                             <h5>Organizadores</h5>
-                            <h6>Miguel Nava</h6>
+                            <h6>{{top_score.organizers.name}}</h6>
                         </div>
                         <div>
                             <a href="">ver más fotos</a>
@@ -116,35 +116,6 @@
                 </div>
             </article>
             {% endfor %}
-            <article>
-                <figure>
-                    <img src={% static "img/imgtop.jpg" %} alt="">
-                </figure>
-                <div class="centro">
-                    <h4>Poll Party, Miguel</h4>
-                    <p>En esta fiesta Miguel se puso bien loco y nadie lo podía parar, se desvistió y se lanzó a la alberca</p>
-                    <div class=line>
-                        <div>
-                            <h5>Ranking del evento</h5>
-                            <div class=line>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h5>Organizadores</h5>
-                            <h6>Miguel Nava</h6>
-                        </div>
-                        <div>
-                            <a href="">ver más fotos</a>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
         </div>
     </section>
     <footer>

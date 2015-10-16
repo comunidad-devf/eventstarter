@@ -57,8 +57,8 @@ class Event(models.Model):
 
     # Due
     due_date = models.DateTimeField()
-    goal = models.DecimalField(max_digits=19, decimal_places=10)
-    progress = models.DecimalField(max_digits=19, decimal_places=10)
+    goal = models.DecimalField(max_digits=19, decimal_places=2)
+    progress = models.DecimalField(max_digits=19, decimal_places=2)
 
     # Location
     location_name = models.CharField(max_length=255)

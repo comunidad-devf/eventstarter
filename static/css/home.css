@@ -34,12 +34,16 @@ nav a:hover{
     text-decoration: underline;
     color:black;
 }
+header{
+    background-color: :pink;
+}
 .home_header{
+    text-align: center;
+    height:650px;
     color:white;
     background-image: url(../img/party.jpg);
     background-position: center;
-    text-align: center;
-    height:650px;
+
 }
 header article {
     position: relative;
