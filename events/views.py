@@ -24,3 +24,7 @@ def events_home(request):
             user_profile.facebook_url = 'https://www.facebook.com/app_scoped_user_id/%s/' % facebook_id
             user_profile.save()
     return render(request, 'events/home.html', {})
+
+
+def events(request):
+    return render(request, 'events/events.html', {})
