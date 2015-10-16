@@ -37,7 +37,7 @@
 
 	<section class="row" id="first_container">
 		<figure class= "col-md-6">
-			<img src="{% static "img/image.jpg" %}" alt="imagenevento"/>
+			<img src="{{ event.photo }}" alt="">
 		</figure>
 		<section class= "col-md-6">
 			<article>
@@ -48,7 +48,7 @@
 				<h2>Recaudado:</h2>
 				<p class="goal">{{ event.progress }} <span class="mxn">MXN.</span></p>
 			</article>
-				<button type="button" class="btn btn-default"><p id="texto_ticket"><i class="fa fa-ticket"></i> COMPRAR TICKET</p></button>
+				<button type="button" onclick="location.href = 'http://127.0.0.1:8000/events/1/fund/';" class="btn btn-default"><p id="texto_ticket"><i class="fa fa-ticket"></i> COMPRAR TICKET</p></button>
 		</section>		
 	</section>
 
