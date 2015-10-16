@@ -9,9 +9,17 @@
     <link rel="stylesheet" href="{% static "css/lib/bootstrap.min.css" %}" />
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    {% block stylesheet %}
+        
+    {% endblock stylesheet %}
     {% block head %}{% endblock %}
 </head>
 <body>
+    <script src="{% static "js/lib/jquery-2.1.4.min.js" %}"></script>
+    <script src="{% static "js/home.js" %}"></script>
+    <script>
+        CountDownTimer({{event.end_date}}, 'countdown');
+    </script>
     {% block body %}{% endblock %}
 </body>
 </html>

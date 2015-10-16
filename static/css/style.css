@@ -1,0 +1,187 @@
+nav{
+	background-color: white;
+    opacity:0.5;
+    text-align: right;
+    height:60px;
+    width: 100%;
+	background-color: #fff;
+	position:absolute;
+	right: 0;
+	padding-right: 20px;
+
+}
+
+nav ul {
+    color: black;
+    font-weight: bold;
+    vertical-align:middle;
+    height: 15px;
+    list-style: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-75%);
+
+}
+nav li {
+    display: inline;
+}
+nav a{
+    text-decoration: none;
+    color:black;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: lato;
+
+}
+nav a:hover{
+    text-decoration: underline;
+    color:black;
+}
+
+h1{
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 30px;
+	color: #000;
+}
+h2{
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 25px;
+	color: #000;
+}
+
+
+p{
+	font-family: 'Lato', sans-serif;
+	font-weight: 200;
+	font-size: 15px;
+	color: #000;
+}
+
+label{
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	color: #000;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+div{
+	margin: 20px;
+}
+ul{
+	text-decoration: none;
+}
+
+input{
+	margin-bottom: 10px;
+	border: 1px solid #4ae5eb;
+	width: 150px;
+	padding: 15px;
+
+
+}
+
+
+textarea{
+	border: 1px solid #4ae5eb;
+}
+
+hr{
+	border: 1px solid #4ae5eb;
+}
+
+
+.image_header{
+	width: 100%;
+}
+
+.goal{
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 50px;
+	color: #000;
+
+}
+.mxn{
+
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	color:  #000;
+}
+.btn{
+	width: 350px;
+	height: 80px;
+	border:0;
+	background-color: #be48d4;
+	color:#fff;
+	margin-top: 40px;
+}
+
+.btn:hover{
+	background-color: #4ae5eb;
+}
+
+.pink_star{
+	color: #be48d4;
+}
+
+.ticket{
+	width: 300px;
+	height: 200px;
+	background-color:#4ae5eb;
+	padding: 15px; 
+	text-align: center;
+	margin:15px;
+}
+
+#greeninput{
+	width: 350px;
+	height: 80px;
+	border:0;
+	background-color: #be48d4;
+	color:#fff;
+	margin-top: 40px;
+	font-size: 20px;
+	align:left;
+	font-family: 'Lato', sans-serif;
+
+}
+
+
+#counter_days{
+	color: #be48d4
+}
+
+#first_container{
+	border: 2px solid #4ae5eb;
+	margin:20px;
+	padding: 20px;
+}
+
+#second_container{
+	border: 2px solid #4ae5eb;
+	margin:20px;
+	padding: 20px;
+}
+
+#table{
+	border: 2px solid #4ae5eb;
+	padding: 15px;
+}
+
+#texto_ticket{
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;	
+}
+
+#third_container{
+	border: 2px solid #4ae5eb;
+	margin:20px;
+	padding: 20px;
+}

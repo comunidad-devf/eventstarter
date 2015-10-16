@@ -47,11 +47,18 @@ class Event(models.Model):
     description = models.TextField()
     requirements = models.TextField(null=True, blank=True)
     restrictions = models.ManyToManyField(Restriction)
-    video_url = models.URLField(null=True, blank=True)
+    event_image = models.ImageField(upload_to="event_media", null=True, blank=True)
     minimum_attendance = models.IntegerField(default=0)
     maximum_attendance = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
     categories = models.ManyToManyField(EventCategory)
+
+    def get_image(self):
+        try:
+            return """<img src="%s" style="display: block; width: 60px;"/>""" % self.event_image.url
+        except:
+            return "<h3>No image</h3>"
+    get_image.allow_tags = True
 
     # Date
     start_date = models.DateTimeField()
@@ -59,8 +66,8 @@ class Event(models.Model):
 
     # Due
     due_date = models.DateTimeField()
-    goal = models.DecimalField(max_digits=19, decimal_places=10)
-    progress = models.DecimalField(max_digits=19, decimal_places=10)
+    goal = models.DecimalField(max_digits=19, decimal_places=2)
+    progress = models.DecimalField(max_digits=19, decimal_places=2)
 
     # Location
     location_name = models.CharField(max_length=255)
@@ -72,6 +79,7 @@ class Event(models.Model):
     location_zip_code = models.CharField(max_length=20)
     location_suburb = models.CharField(max_length=255, default=True)#colonia
     location_neighborhood = models.CharField(max_length=255, default=True)# delegacion
+
 
     # Finished event data
     attendances = models.IntegerField(default=0)
@@ -110,12 +118,12 @@ class EventTier(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "%s %s %s %s %s %s" % (self.name,
-                                      self.event,
-                                      self.price,
-                                      self.image,
-                                      self.created,
-                                      self.modified)
+        return '{} {} {} {} {} {}'.format(self.name,
+                                          self.event,
+                                          self.price,
+                                          self.image,
+                                          self.created,
+                                          self.modified)
 
 
 class EventPhoto(models.Model):
@@ -128,7 +136,7 @@ class EventPhoto(models.Model):
     user = models.ForeignKey(UserProfile)
     event = models.ForeignKey(Event)
     caption = models.CharField(max_length=140, null=True, blank=True)
-    image = models.ImageField(upload_to="event_media")
+    image = models.ImageField(upload_to="static/img/event_media")
     positive_votes = models.IntegerField(default=0)
     negative_votes = models.IntegerField(default=0)
 
@@ -137,11 +145,7 @@ class EventPhoto(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "%s %s %s %s" % (self.user,
-                                self.event,
-                                self.image,
-                                self.positive_votes,
-                                self.negative_votes)
+        return self.event.name
 
 
 class EventComment(models.Model):
@@ -162,10 +166,10 @@ class EventComment(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {}'.format(self.name,
-                                    self.event,
-                                    self.positive_vote,
-                                    self.negative_votes)
+        return "%s %s %s %s" % (self.name,
+                                self.event,
+                                self.positive_vote,
+                                self.negative_votes)
 
 
 class UserVotesPhoto(models.Model):
@@ -184,10 +188,10 @@ class UserVotesPhoto(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {}'.format(self.user,
-                                    self.positive_vote,
-                                    self.created,
-                                    self.modified)
+        return "%s %s %s %s" % (self.user,
+                                self.positive_vote,
+                                self.created,
+                                self.modified)
 
 
 class UserVotesComment(models.Model):
