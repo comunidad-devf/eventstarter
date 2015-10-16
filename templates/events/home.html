@@ -19,17 +19,6 @@
             Enter with Facebook
             </a>
         </p>
-    {% endif %q}
-    <h3>Evento</h3>
-    {% for event in events %}
-        <p>{{ event }}</p>
-    {% endfor %}
-
-    <h3>top</h3>
-    {% for top_score in top_scores %}
-        <p>{{ top_score.score }}</p>
-    {% endfor %}
-{% endblock %}
     {% endif %}-->
     <header class="home_header">
         <nav>
@@ -53,23 +42,24 @@
         </article>
     </header>
     <section class=container id="randomp">
+        {% for event in events %}
         <article>
             <figure>
                 <img src="{% static "img/evento.jpg" %}" alt="">
             </figure>
             <div class="centro">
                 <div>
-                    <h4>Rock & ROll Party</h4>
-                    <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
+                    <h4>{{event.name}}</h4>
+                    <p>{{event.description}}</p>
                 </div>
                 <div class="line">
                     <i class="fa fa-map-marker"></i>
-                    <h5>Polanco D.F.</h5>
+                    <h5>{{event.location_name}} {{event.location_city}}</h5>
                 </div>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
                         aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                        <span class="sr-only">70% Complete</span>
+                        <span class="sr-only">{{event.progress}}</span>
                     </div>
                 </div>
                 <div>
@@ -77,214 +67,26 @@
                 </div>
                 <div class="line">
                     <div>
-                        <h5>$2,150</h5>
+                        <h5>{{event.progress}}</h5>
                         <h6>Recaudado</h6>
                     </div>
                     <div>
-                        <h5>$10,000</h5>
+                        <h5>{{event.goal}}</h5>
                         <h6>Meta</h6>
                     </div>
                     <div>
-                        <h5>10</h5>
+                        <h5>{{event.end_date}}</h5>
                         <h6>Días restantes</h6>
                     </div>
                 </div>
             </div>
         </article>
-        <article>
-            <figure>
-                <img src="{% static "img/evento.jpg" %}" alt="">
-            </figure>
-            <div class="centro">
-                <div>
-                    <h4>Rock & ROll Party</h4>
-                    <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-                </div>
-                <div class="line">
-                    <i class="fa fa-map-marker"></i>
-                    <h5>Polanco D.F.</h5>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                        aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                        <span class="sr-only">70% Complete</span>
-                    </div>
-                </div>
-                <div>
-                    <div></div>
-                </div>
-                <div class="line">
-                    <div>
-                        <h5>$2,150</h5>
-                        <h6>Recaudado</h6>
-                    </div>
-                    <div>
-                        <h5>$10,000</h5>
-                        <h6>Meta</h6>
-                    </div>
-                    <div>
-                        <h5>10</h5>
-                        <h6>Días restantes</h6>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="{% static "img/evento.jpg" %}" alt="">
-            </figure>
-            <div class="centro">
-                <div>
-                    <h4>Rock & ROll Party</h4>
-                    <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-                </div>
-                <div class="line">
-                    <i class="fa fa-map-marker"></i>
-                    <h5>Polanco D.F.</h5>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                        aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                        <span class="sr-only">70% Complete</span>
-                    </div>
-                </div>
-                <div>
-                    <div></div>
-                </div>
-                <div class="line">
-                    <div>
-                        <h5>$2,150</h5>
-                        <h6>Recaudado</h6>
-                    </div>
-                    <div>
-                        <h5>$10,000</h5>
-                        <h6>Meta</h6>
-                    </div>
-                    <div>
-                        <h5>10</h5>
-                        <h6>Días restantes</h6>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="{% static "img/evento.jpg" %}" alt="">
-            </figure>
-            <div class="centro">
-                <div>
-                    <h4>Rock & ROll Party</h4>
-                    <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-                </div>
-                <div class="line">
-                    <i class="fa fa-map-marker"></i>
-                    <h5>Polanco D.F.</h5>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                        aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                        <span class="sr-only">70% Complete</span>
-                    </div>
-                </div>
-                <div>
-                    <div></div>
-                </div>
-                <div class="line">
-                    <div>
-                        <h5>$2,150</h5>
-                        <h6>Recaudado</h6>
-                    </div>
-                    <div>
-                        <h5>$10,000</h5>
-                        <h6>Meta</h6>
-                    </div>
-                    <div>
-                        <h5>10</h5>
-                        <h6>Días restantes</h6>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="{% static "img/evento.jpg" %}" alt="">
-            </figure>
-            <div class="centro">
-                <div>
-                    <h4>Rock & ROll Party</h4>
-                    <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-                </div>
-                <div class="line">
-                    <i class="fa fa-map-marker"></i>
-                    <h5>Polanco D.F.</h5>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                        aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                        <span class="sr-only">70% Complete</span>
-                    </div>
-                </div>
-                <div>
-                    <div></div>
-                </div>
-                <div class="line">
-                    <div>
-                        <h5>$2,150</h5>
-                        <h6>Recaudado</h6>
-                    </div>
-                    <div>
-                        <h5>$10,000</h5>
-                        <h6>Meta</h6>
-                    </div>
-                    <div>
-                        <h5>10</h5>
-                        <h6>Días restantes</h6>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="{% static "img/evento.jpg" %}" alt="">
-            </figure>
-            <div class="centro">
-                <div>
-                    <h4>Rock & ROll Party</h4>
-                    <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-                </div>
-                <div class="line">
-                    <i class="fa fa-map-marker"></i>
-                    <h5>Polanco D.F.</h5>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                        aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                        <span class="sr-only">70% Complete</span>
-                    </div>
-                </div>
-                <div>
-                    <div></div>
-                </div>
-                <div class="line">
-                    <div>
-                        <h5>$2,150</h5>
-                        <h6>Recaudado</h6>
-                    </div>
-                    <div>
-                        <h5>$10,000</h5>
-                        <h6>Meta</h6>
-                    </div>
-                    <div>
-                        <h5>10</h5>
-                        <h6>Días restantes</h6>
-                    </div>
-                </div>
-            </div>
-        </article>
+        {% endfor %}
     </section>
     <section id="bestparties">
         <div class="container"id="wraper">
             <h2>ASÍ SE VEN LOS EVENTOS EN <span>PARTY EVENTS</span></h2>
+            {% for top_score in top_scores %}
             <article>
                 <figure>
                     <img src={% static "img/imgtop.jpg" %} alt="">
@@ -313,6 +115,7 @@
                     </div>
                 </div>
             </article>
+            {% endfor %}
             <article>
                 <figure>
                     <img src={% static "img/imgtop.jpg" %} alt="">
