@@ -45,7 +45,7 @@
         {% for event in events %}
         <article>
             <figure>
-                <img src="{% static "img/evento.jpg" %}" alt="">
+                <img src="{{ event.photo }}" alt="">
             </figure>
             <div class="centro">
                 <div>
@@ -89,7 +89,7 @@
             {% for top_score in top_scores %}
             <article>
                 <figure>
-                    <img src={% static "img/imgtop.jpg" %} alt="">
+                    <img src={{ event.photo }} alt="">
                 </figure>
                 <div class="centro">
                     <h4>{{top_score.name}}</h4>
