@@ -12,13 +12,11 @@
     {% block head %}{% endblock %}
 </head>
 <body>
-    <script>
-        var fechainicio = new Date("{{event.start_date}}");
-        var fechafinal = new Date("{{event.end_date}}");
-        var diasDif = fechafinal.getTime() - fechainicio.getTime();
-        var dias = Math.round(diasDif/(1000 * 60 * 60 * 24));
-    </script>
+    <script src="{% static "js/lib/jquery-2.1.4.min.js" %}"></script>
     <script src="{% static "js/home.js" %}"></script>
+    <script>
+        CountDownTimer({{event.end_date}}, 'countdown');
+    </script>
     {% block body %}{% endblock %}
 </body>
 </html>
