@@ -15,6 +15,11 @@
     {% block head %}{% endblock %}
 </head>
 <body>
+    <script src="{% static "js/lib/jquery-2.1.4.min.js" %}"></script>
+    <script src="{% static "js/home.js" %}"></script>
+    <script>
+        CountDownTimer({{event.end_date}}, 'countdown');
+    </script>
     {% block body %}{% endblock %}
 </body>
 </html>
