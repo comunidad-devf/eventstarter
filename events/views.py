@@ -161,6 +161,26 @@ def event(request, event):
     return render(request, 'events/event.html', context)
 
 
+def fund(request, event):
+    this_event = get_object_or_404(Event, pk=event)
+    this_tier = EventTier.objects.filter(event=this_event)
+    context = {
+        'event': this_event,
+        'tier': this_tier
+    }
+    return render(request, 'events/fund.html', context)
+
+
+def confirm(request, event):
+    this_event = get_object_or_404(Event, pk=event)
+    this_tier = EventTier.objects.filter(event=this_event)
+    context = {
+        'event': this_event,
+        'tier': this_tier
+    }
+    return render(request, 'events/confirm.html', context)
+
+
 def successful_event(request):
     context = {
         'events': Event.objects.filter(achieved_goal=True)

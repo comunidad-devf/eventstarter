@@ -18,6 +18,14 @@ urlpatterns = [
     url(
         r'^events/(?P<event>\d+)/$',
         'events.views.event',
-        name='event'
-    ),
+        name='event'),
+
+    url(r'^events/(?P<event>\d+)/fund/$',
+        'events.views.fund',
+        name='fund'),
+
+    url(
+        r'^events/(?P<event>\d+)/fund/confirm/$',
+        'events.views.confirm',
+        name='confirm'),
 ]
