@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block body %}
@@ -78,30 +79,12 @@
         </article>
         <article class= "col-md-6">
             <div>            
-                {% for tier in event.eventtier.all %}
+                {% for tier in tier.all %}
                 <h2>{{tier.name}}<h2>  
                 <p>{{tier.price}}</p>
                 <p>{{tier.description}}</p>                
                 {% endfor %}
             </div>
-
-
-
-            <div>
-                <h2>Primera recompensa<h2>  
-                <p>$250.00</p>
-                <p> Sólo incluye un pase al evento</p>
-            </div>
-            <div>
-                <h2>Segunda recompensa<h2>  
-                <p>$250.00</p>
-                <p> Sólo incluye un pase al evento</p>
-            </div>
-            <div>
-                <h2>Tercera recompensa<h2>  
-                <p>$250.00</p>
-                <p> Sólo incluye un pase al evento</p>
-            </div>  
         </article>
     </section>
     </section>
@@ -109,4 +92,3 @@
     
     </footer>
 {% endblock %}
-</html>

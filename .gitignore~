@@ -2,7 +2,6 @@
 __pycache__/
 *.py[cod]
 
-db.sqlite3
 # C extensions
 *.so
 
@@ -56,7 +55,3 @@ docs/_build/
 
 # PyBuilder
 target/
-*.sqlite3
-vars.sh
-
-devf/
