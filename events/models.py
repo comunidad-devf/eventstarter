@@ -18,8 +18,7 @@ class Restriction(models.Model):
 
     def __unicode__(self):
         """Return the name, logo, created time and modified time."""
-        return '{} {} {} {}'.format(self.name, self.logo, self.created,
-                                    self.modified)
+        return self.name + self.logo + self.created + self.modified
 
 
 class EventCategory(models.Model):
@@ -33,7 +32,7 @@ class EventCategory(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{}'.format(self.name)
+        return self.name
 
 
 class Event(models.Model):
@@ -101,12 +100,7 @@ class EventTier(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {} {} {}'.format(self.name,
-                                          self.event,
-                                          self.price,
-                                          self.image,
-                                          self.created,
-                                          self.modified)
+        return self.name + self.event + self.price + self.image + self.created + self.modified
 
 
 class EventPhoto(models.Model):
@@ -128,11 +122,7 @@ class EventPhoto(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {} {}'.format(self.user,
-                                       self.event,
-                                       self.image,
-                                       self.positive_votes,
-                                       self.negative_votes)
+        return self.user + self.event + self.image + self.positive_votes + self.negative_votes
 
 
 class EventComment(models.Model):
@@ -153,10 +143,7 @@ class EventComment(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {}'.format(self.name,
-                                    self.event,
-                                    self.positive_vote,
-                                    self.negative_votes)
+        return self.name + self.event + self.positive_vote
 
 
 class UserVotesPhoto(models.Model):
@@ -175,10 +162,7 @@ class UserVotesPhoto(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {}'.format(self.user,
-                                    self.positive_vote,
-                                    self.created,
-                                    self.modified)
+        return self.user + self.positive_vote + self.created + self.modified
 
 
 class UserVotesComment(models.Model):
@@ -197,7 +181,4 @@ class UserVotesComment(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {}'.format(self.user,
-                                    self.positive_vote,
-                                    self.created,
-                                    self.modified)
+        return self.user + self.positive_vote + self.created + self.modified
