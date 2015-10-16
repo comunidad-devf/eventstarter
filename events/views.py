@@ -1,15 +1,10 @@
 """Events views."""
 from django.shortcuts import render, redirect
 from userprofiles.models import UserProfile
-<<<<<<< HEAD
 from django.http import HttpResponse
 from events.models import Event, EventCategory, EventTier, Restriction
-=======
 from django.shortcuts import get_object_or_404
-from events.models import Event, EventTier
 import random
-# from django.http import HttpResponse
->>>>>>> 15f290faeaedf5910e41d9ec5f5c144cc95bf477
 
 
 def events_home(request):
@@ -48,7 +43,7 @@ def events_home(request):
             user_profile.avatar = picture_url
             user_profile.facebook_url = 'https://www.facebook.com/app_scoped_user_id/%s/' % facebook_id
             user_profile.save()
-<<<<<<< HEAD
+
     return render(request, 'events/home.html', {})
 
 
@@ -147,4 +142,3 @@ def event(request, event):
         'tier': this_tier
     }
     return render(request, 'events/event.html', context)
-
