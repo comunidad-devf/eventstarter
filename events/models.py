@@ -109,7 +109,7 @@ class EventTier(models.Model):
 
     name = models.CharField(max_length=140)
     event = models.ForeignKey(Event)
-    price = models.DecimalField(max_digits=19, decimal_places=10)
+    price = models.DecimalField(max_digits=19, decimal_places=2)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="event_media")
 

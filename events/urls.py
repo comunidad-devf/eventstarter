@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^crear_evento/$',
         'events.views.create_event',
         name='create_event'),
-    
+
     url(r'^successful_event/$',
         'events.views.successful_event',
         name='successful_event'),
@@ -20,5 +20,4 @@ urlpatterns = [
         'events.views.event',
         name='event'
     ),
-
 ]
