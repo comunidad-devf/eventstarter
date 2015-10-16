@@ -47,11 +47,18 @@ class Event(models.Model):
     description = models.TextField()
     requirements = models.TextField(null=True, blank=True)
     restrictions = models.ManyToManyField(Restriction)
-    video_url = models.URLField(null=True, blank=True)
+    event_image = models.ImageField(upload_to="event_image", null=True, blank=True)
     minimum_attendance = models.IntegerField(default=0)
     maximum_attendance = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
     categories = models.ManyToManyField(EventCategory)
+
+    def get_image(self):
+        try:
+            return """<img src="%s" style="display: block; width: 60px;"/>""" % self.event_image.url
+        except:
+            return "<h3>No image</h3>"
+    get_image.allow_tags = True
 
     # Date
     start_date = models.DateTimeField()
