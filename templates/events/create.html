@@ -1,63 +1,138 @@
-{% extends "base.html" %}
+
+	{% extends "base.html" %}
 
 {% block title %}Create Event{% endblock %}
+{% load static from staticfiles %}
+{% block stylesheet %}
+
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+	
+{% endblock stylesheet %}
 
 {% block body %}
-<form id="new_event" name="new_event" method="POST" action="">
-<h2>Event info</h2>
-{% csrf_token %}
-<label for="id_event_name">Name:</label>
-<input id="id_event_name" maxlength="140" name="event_name">
-<label for="id_video_url">Video url:</label><input id="id_video_url" maxlength="200" name="video_url" type="url" />
-<label for="id_start_date">Start date:</label><input id="id_start_date" name="start_date" type="text" />
-<label for="id_end_date">End date:</label><input id="id_end_date" name="end_date" type="text" />
-<label for="id_due_date">Due date:</label><input id="id_due_date" name="due_date" type="text" />
-<label for="id_goal">Goal:</label><input id="id_goal" name="goal" step="1e-10" type="number" />
-<label for="id_progress">progress:</label><input id="id_progress" name="progress" step="1e-10" type="number" />
-<label for="id_event_description">Description:</label><textarea cols="40" id="id_event_description" name="event_description" rows="10">
-</textarea>
 
-<h2> Address</h2>
-        <label for="id_location_street">Location street:</label>
-        <input id="id_location_street" maxlength="255" name="location_street" type="text" />
-        <label for="id_location_number">Location number:</label>
-        <input id="id_location_number" maxlength="20" name="location_number" type="text" />
-        <label for="id_location_suburb">Location suburb:</label>
-        <input id="id_location_suburb" maxlength="255" name="location_suburb" type="text" />
-        <label for="id_location_neighborhood">Location neighborhood:</label>
-        <input id="id_location_neighborhood" maxlength="255" name="location_neighborhood" type="text" />
-        <label for="id_location_zip_code">Location zip code:</label>
-        <input id="id_location_zip_code" maxlength="20" name="location_zip_code" type="text" />
-        <label for="id_location_city">Location city:</label>
-        <input id="id_location_city" maxlength="255" name="location_city" type="text" />
+	<header >
+		  <nav>
+            <ul class="container">
+                <li>
+                    <a href="">Crea tu evento </a> |
+                </li>
+                <li>
+                    <a href=""> Regístrate </a> |
+                </li>
+                <li>
+                    <a href=""> Iniciar sesión</a>
+                </li>
+            </ul>
+        </nav>
+		<figure > <img class="image_header" src="{% static "img/fondo.jpg" %}" alt="imagenfondo"/> </figure>
+	</header>
 
-        <h2>Attendances</h2>
-        <label for="id_minimum_attendance">Minimum attendance:</label>
-        <input id="id_minimum_attendance" name="minimum_attendance" type="number" value="0" />
-        <label for="id_maximum_attendance">Maximum attendance:</label>
-        <input id="id_maximum_attendance" name="maximum_attendance" type="number" value="0" />
+<form class= "container" id="new_event" name="new_event" method="POST" action="">
+	<div>
+		<h1>Let's follow the party</h1>
+		<br>
+		<p>Añade la siguiente información para crear tu evento: </p>
+	</div>
+	{% csrf_token %}
 
-        <h2>Category</h2>
-        <label for="id_category_name">Name:</label>
-        <input id="id_category_name" maxlength="50" name="category_name" type="text" />
-
-        <h2>Restrictions</h2>
-        <label for="id_restriction_name">Name:</label>
-        <input id="id_restriction_name" maxlength="50" name="restriction_name" type="text" />
-        <label for="id_restriction_description">Description:</label>
-        <textarea cols="40" id="id_restriction_description" name="restriction_description" rows="10">
-        </textarea>
-
-        <h2>Tiers</h2>
-        <label for="id_tier_name">Name:</label>
-        <input id="id_tier_name" maxlength="140" name="tier_name" type="text" />
-        <label for="id_tier_price">Price:</label>
-        <input id="id_tier_price" name="tier_price" step="1e-10" type="number" />
-        <label for="id_tier_description">Description:</label>
-        <textarea cols="40" id="id_tier_description" name="tier_description" rows="10">
-        </textarea>
-        <input type="submit" value="Create event">
+	<div class="container" id ="table">
+			<h2>Describe tu evento</h2>
+			<div>
+				<label for="id_event_name">Nombre del evento:  </label>
+				<input id="id_event_name" maxlength="140" name="event_name" placeholder="Ponle un nombre cool...">
+			</div>
+			<div>
+				<label for="id_video_url">Inserta una imagen:  </label>
+				<input id="id_video_url" maxlength="200" name="video_url" type="url" placeholder="Añade una URL..." />
+			</div>
+			<div>
+				<label for="id_start_date">Fecha de inicio:  </label>
+				<input id="id_start_date" name="start_date" type="text" placeholder="Ej.15/10/16" />
+				<label for="id_end_date">Fecha de final:  </label>
+				<input id="id_end_date" name="end_date" type="text" placeholder="Ej.15/10/16"/>
+				<label for="id_due_date">Fecha límite de recaudación:  </label>
+				<input id="id_due_date" name="due_date" type="text" placeholder="Ej.15/10/16" />
+			</div>
+			<div>
+				<label for="id_goal">Tu evento necesita:  </label>
+				<input id="id_goal" name="goal" step="1e-10" type="number" />
+				<!--<label for="id_progress">progress:</label><input id="id_progress" name="progress" step="1e-10" type="number"/>-->
+			<div>
+				<label for="id_event_description">Descripción:  </label>
+				<textarea cols="40" id="id_event_description" name="event_description" rows="10">
+				</textarea>
+			</div>
+		</div>
+	<hr/>
+		<div class="container">
+			<div>
+				<h2>Dirección</h2>
+			</div>
+			<div>
+		       <label for="id_location_street">Calle:  </label>
+		       <input id="id_location_street" maxlength="255" name="location_street" type="text" />
+		       <label for="id_location_number">Número:  </label>
+		       <input id="id_location_number" maxlength="20" name="location_number" type="text" />
+		       <label for="id_location_suburb">Colonia:  </label>
+		       <input id="id_location_suburb" maxlength="255" name="location_suburb" type="text" />
+		    </div>
+		    <div>
+		       <label for="id_location_neighborhood">Delegación:  </label>
+		       <input id="id_location_neighborhood" maxlength="255" name="location_neighborhood" type="text" />
+		       <label for="id_location_zip_code">Código Postal:  </label>
+		       <input id="id_location_zip_code" maxlength="20" name="location_zip_code" type="text" />
+		       <label for="id_location_city">Ciudad:  </label>
+		       <input id="id_location_city" maxlength="255" name="location_city" type="text" />
+		    </div>
+     	</div>
+    <hr/>
+		<div class="container">
+	       <h2>Cupo</h2>
+	       <label for="id_minimum_attendance">Cupo mínimo:  </label>
+	       <input id="id_minimum_attendance" name="minimum_attendance" type="number" value="0" />
+	       <label for="id_maximum_attendance">Cupo máximo: </label>
+	       <input id="id_maximum_attendance" name="maximum_attendance" type="number" value="0" />
+   		</div>
+	<hr/>
+   		<div class="container">
+   			<h2>Categoría del evento:  </h2>
+   			<div>
+		       <label for="id_category_name">Nombra una categoría:  </label>
+		       <input id="id_category_name" maxlength="50" name="category_name" type="text"placeholder="Ej.Pool Party" />
+	   		</div>
+	    </div>
+	<hr/>
+		<div class="container">
+	       <h2>Restrictiones</h2>
+	       <div>
+		       <label for="id_restriction_name">Nombre:  </label>
+		       <input id="id_restriction_name" maxlength="50" name="restriction_name" type="text" placeholder="Ej.Disfraz obligatorio"/>
+	   		</div>
+	   		<div>
+		       <label for="id_restriction_description">Descripción: </label>
+		       <textarea cols="40" id="id_restriction_description" name="restriction_description" rows="10">
+		       </textarea>
+		    </div>
+	    </div>
+	<hr/>
+	    <div class="container">
+	    	<h2>Ticket y Recompensa</h2>
+	    <div>
+	       <label for="id_tier_name">Nombre:  </label>
+	       <input id="id_tier_name" maxlength="140" name="tier_name" type="text" />
+	    </div>
+	    <div>
+	       <label for="id_tier_price">Precio:  </label>
+       		<input id="id_tier_price" name="tier_price" step="1e-10" type="number" />
+   		</div>
+   		<div>
+	       <label for="id_tier_description">Descripción:  </label>
+	       <textarea cols="40" id="id_tier_description" name="tier_description" rows="10">
+	       </textarea>
+   		</div>
+       <input type="submit" value="Crear Evento" id="greeninput" >
+      	</div>
 
 </form>
 {% endblock %}
-	

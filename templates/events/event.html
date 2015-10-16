@@ -1,94 +1,124 @@
+	{% extends "base.html" %}
+	{% block title %}Event{% endblock %}
+	{% load static from staticfiles %}
+	{% block stylesheet %}
 
-{% extends "base.html" %}
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+	
+{% endblock stylesheet %}
+	{% block body %}
 
-{% block body %}
-    <header>
-        <figure> <img src="fondo.jpg" alt="imagenfondo"/> </figure>     
-    </header>
-    <section class="container">
-        <section class="row">
-            <div class= "col-md-6">
-                <h1> {{event.name}} </h1>
-            </div>
-            <div class= "col-md-6">
-                <p> Fecha límite:<p> <!-- cambie este titulo, leer proximo comment -->
-                <p> {{event.due_date}} </p> <!-- necesitamos un AJAX script aqui para que salga como countdown -->
-            </div>
-        </section>
-    <section class="row">
-        <figure class= "col-md-6">
-            <img src="image_evento.jpg" alt="imagenevento"/>
-        </figure>
-        <section class= "col-md-6">
-            <article>
-                <h2>Necesita:</h2>
-                <p>{{ event.goal }}</p>
-                <p>MXN.</p>
-            </article>
-            <article>
-                <h2>Recaudado:</h2>
-                <p>{{ event.progress }}</p>
-                <p>MXN.</p>
-            </article>
-        </section>      
-    </section>
-    <section class="row">
-        <article class= "col-md-4">
-            <h4>Organizadores</h4>
-            <ul>
+	<header>
+		<nav>
+            <ul class="container">
+                <li>
+                    <a href="">Crea tu evento </a> |
+                </li>
+                <li>
+                    <a href=""> Regístrate </a> |
+                </li>
+                <li>
+                    <a href=""> Iniciar sesión</a>
+                </li>
+            </ul>
+        </nav>
+		<figure class="image_header"> <img src="{% static "img/fondo.jpg" %}" alt="imagenfondo"/> </figure>		
+	</header>
+
+	<section class="container">
+		<section class="row">
+			<div class= "col-md-6">
+				<h1> {{event.name}} </h1>
+			</div>
+			<div class= "col-md-6">
+				<h2> Fecha límite:<span id="counter_days">{{event.due_date}}</span> para comprar<h2>
+			</div>
+		</section>
+
+	<section class="row" id="first_container">
+		<figure class= "col-md-6">
+			<img src="{% static "img/image.jpg" %}" alt="imagenevento"/>
+		</figure>
+		<section class= "col-md-6">
+			<article>
+				<h2>Necesita:</h2>
+				<p class="goal">{{ event.goal }}<span class="mxn">MXN.</span></p>
+			</article>
+			<article>
+				<h2>Recaudado:</h2>
+				<p class="goal">{{ event.progress }} <span class="mxn">MXN.</span></p>
+			</article>
+				<button type="button" class="btn btn-default"><p id="texto_ticket"><i class="fa fa-ticket"></i> COMPRAR TICKET</p></button>
+		</section>		
+	</section>
+
+	<section class="row" id="second_container">
+		<figure class= "col-md-3">
+			<img src="{% static "img/organizador.jpg" %}" alt="organizador"/>	
+		</figure>
+		<article class= "col-md-3">
+			<h4>Organizadores</h4>
+			<ul>
                 {% for organizer in event.organizers.all %}
                 <li>{{ organizer.user }}</li>
                 {% endfor %}
             </ul> 
-        </article>
-        <article class= "col-md-4">
-            <h4>Ranking del organizador</h4> <!-- ranking del organizador mas bien no? -->
-            <ul>
+		</article>
+		<article class= "col-md-3">
+			 <ul>
                 {% for organizer in event.organizers.all %}
                 <li>{{ organizer.score }}</li>
                 {% endfor %}
             </ul> 
-        </article>
-        <article class= "col-md-4">
-            <h4>Zona del evento</h4>
-            <p> {{ event.location_city }} </p>
-        </article>
-    </section>
-    <section class= "row">
-        <article class= "col-md-6">
-                <div>
-                    <h2> Fecha del evento: {{ event.start_date }} a  {{ event.end_date }} </h2>
-                    <p> Chocolate bar powder sweet roll gingerbread fruitcake bear claw powder sweet roll. Oat cake halvah jujubes. Tart candy canes oat cake. Sesame snaps cake croissant danish halvah jelly beans. Gummi bears candy canes croissant toffee cotton candy marzipan wafer. Cake chupa chups lollipop wafer.</p>
-                </div>
-                <div>
-                    <h2> Descripción </h2>
-                    <p> {{ event.description }} </p>
-                </div>
-                <div>
-                    <h2> Requerimientos </h2>
-                    <p> {{ event.requirements }} </p>
-                </div>
-                <div>
-                    <h2> Restricciones </h2>
-                    <ul>
+		</article>
+		<article class= "col-md-3">
+			<h4><i class="fa fa-map-marker"></i> Zona del evento</h4>
+			<p> {{ event.location_city }} </p>
+		</article>
+	</section>
+
+	<section class= "row" id="third_container">
+		<article class= "col-md-6">
+				<div>
+					<h2> Fecha del evento </h2>
+					<p> {{ event.start_date }} a  {{ event.end_date }}</p>
+				</div>
+				<div>
+					<h2> Descripción </h2>
+					<p> {{ event.description }}</p>
+
+				</div>
+				<div>
+					<h2> Requerimientos </h2>
+					<p> {{ event.requirements }} </p>
+
+				</div>
+				<div>
+					<h2> Restricciones </h2>
+					<ul>
                         {% for restriction in event.restrictions.all %}
                         <li>{{ restriction.name }}: {{ restriction.description }}</li>
                         {% endfor %}
                     </ul> 
-                </div>
-        </article>
-        <article class= "col-md-6">
-            <div>            
-                {% for tier in tier.all %}
-                <h2>{{tier.name}}<h2>  
-                <p>{{tier.price}}</p>
-                <p>{{tier.description}}</p>                
-                {% endfor %}
-            </div>
-        </article>
-    </section>
-    </section>
-    <footer>
-    
-    </footer>
+
+				</div>
+		</article>
+
+		<article class= "col-md-6">
+			<div class="ticket"> 
+				{% for tier in tier.all %}
+				<h2>{{tier.name}}<h2>	
+				<p class="goal">{{tier.price}} <span class="mxn">MXN.</span></p>
+				<p>{{tier.description}}</p>
+				{% endfor %}
+			</div>
+		</article>
+	</section>
+	</section>
+
+	<footer>
+	
+	</footer>
+	
 {% endblock %}
+	

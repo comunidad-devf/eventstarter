@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from userprofiles.models import UserProfile
 from django.http import HttpResponse
-from events.models import Event, EventCategory, EventTier, Restriction
+from events.models import Event, EventCategory, EventTier, Restriction, EventPhoto
 from django.shortcuts import get_object_or_404
 import random
 
@@ -19,15 +19,32 @@ def events_home(request):
     else:
         events = random.sample(events, len(events))
 
-    top_score = Event.objects.filter(event_completed=True).order_by('score')
-    if (len(top_score) > 2):
-        top_score = top_score[::-1][:2]
+    events_to_show = []
+    for event in events:
+        photos = EventPhoto.objects.filter(event=event)
+        event_dic = {}
+        event_dic['photo'] = photos[0].image
+        event_dic['event'] = event
+        events_to_show.append(event_dic)
+
+
+    top_scores = Event.objects.filter(event_completed=True).order_by('score')
+    if (len(top_scores) > 2):
+        top_scores = top_scores[::-1][:2]
     else:
-        top_score = top_score[::-1]
+        top_scores = top_scores[::-1]
+
+        top_scores_to_show = []
+    for top_score in top_scores:
+        photos = EventPhoto.objects.filter(event=event)
+        top_score_dic = {}
+        top_score_dic['photo'] = photos[0].image
+        top_score_dic['top_score'] = top_score
+        top_scores_to_show.append(top_score_dic)
 
     context = {
-        'events': events,
-        'top_scores': top_score
+        'events': events_to_show,
+        'top_scores': top_scores_to_show
     }
     # Check if user session has an User Profile entity.
     if request.user.is_authenticated():

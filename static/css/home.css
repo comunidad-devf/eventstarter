@@ -34,12 +34,16 @@ nav a:hover{
     text-decoration: underline;
     color:black;
 }
+header{
+    background-color: :pink;
+}
 .home_header{
+    text-align: center;
+    height:650px;
     color:white;
     background-image: url(../img/party.jpg);
     background-position: center;
-    text-align: center;
-    height:650px;
+
 }
 header article {
     position: relative;
@@ -70,9 +74,14 @@ header article button {
     margin: 30px;
     text-align: justify;
     line-height: 14px;
+    height:500px;
+}
+#randomp article figure {
+    height:250px;
 }
 #randomp article figure img {
     width:100%;
+    vertical-align: middle;
 }
 #randomp article h4{
     font-size: 20px;
@@ -98,6 +107,11 @@ header article button {
 }
 .line div h5 {
     font-weight:bold;
+    text-align: right;
+    font-size: 10px;
+}
+.line div h6 {
+    text-align: right;
 }
 #bestparties{
     background-color: #C4D1FE;
