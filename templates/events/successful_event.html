@@ -7,8 +7,10 @@
 <section>
 	<h1>{{detail.name}}</h1>
 	<figure>
-		<img src="{{detail.image}}">
+		<img src="{{detail.event_image}}">
 	</figure>
+	<p>fiesta de la fecha {{detail.start_date}} a la fecha {{detail.end_date}}</p>
+	<p>Lo recaudado fue ${{detail.goal}}</p>
 </section>
 {%endfor%}	
 {% endblock %}

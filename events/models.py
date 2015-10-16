@@ -47,7 +47,7 @@ class Event(models.Model):
     description = models.TextField()
     requirements = models.TextField(null=True, blank=True)
     restrictions = models.ManyToManyField(Restriction)
-    event_image = models.ImageField(upload_to="event_image", null=True, blank=True)
+    event_image = models.ImageField(upload_to="event_media", null=True, blank=True)
     minimum_attendance = models.IntegerField(default=0)
     maximum_attendance = models.IntegerField(default=0)
     score = models.IntegerField(default=0)
