@@ -80,13 +80,7 @@ class Event(models.Model):
 
     def __unicode__(self):
 
-        return '{} {} {} {} {} {} {} '.format(self.name,
-                                              self.start_date,
-                                              self.end_date,
-                                              self.due_date,
-                                              self.goal,
-                                              self.achieved_goal,
-                                              self.event_completed,)
+        return self.name + self.location_city + self.location_street
 
 
 class EventTier(models.Model):

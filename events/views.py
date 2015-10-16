@@ -19,7 +19,7 @@ def events_home(request):
     else:
         events = random.sample(events, len(events))
 
-    top_score = Event.objects.all().order_by('score')
+    top_score = Event.objects.filter(event_completed=True).order_by('score')
     if (len(top_score) > 2):
         top_score = top_score[::-1][:2]
     else:
