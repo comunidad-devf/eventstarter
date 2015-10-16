@@ -45,21 +45,21 @@
         {% for event in events %}
         <article>
             <figure>
-                <img src="{% static "img/evento.jpg" %}" alt="">
+                <img src="{{ event.photo }}" alt="">
             </figure>
             <div class="centro">
                 <div>
-                    <h4>{{event.name}}</h4>
-                    <p>{{event.description}}</p>
+                    <h4>{{event.event.name}}</h4>
+                    <p>{{event.event.description}}</p>
                 </div>
                 <div class="line">
                     <i class="fa fa-map-marker"></i>
-                    <h5>{{event.location_name}} {{event.location_city}}</h5>
+                    <h5>{{event.event.location_name}} {{event.event.location_city}}</h5>
                 </div>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
                         aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                        <span class="sr-only">{{event.progress}}</span>
+                        <span class="sr-only">{{event.event.progress}}</span>
                     </div>
                 </div>
                 <div>
@@ -67,15 +67,15 @@
                 </div>
                 <div class="line">
                     <div>
-                        <h5>{{event.progress}}</h5>
+                        <h5>{{event.event.progress}}</h5>
                         <h6>Recaudado</h6>
                     </div>
                     <div>
-                        <h5>{{event.goal}}</h5>
+                        <h5>{{event.event.goal}}</h5>
                         <h6>Meta</h6>
                     </div>
                     <div>
-                        <h5>{{event.end_date}}</h5>
+                        <h5>{{event.event.end_date}}</h5>
                         <h6>Días restantes</h6>
                     </div>
                 </div>

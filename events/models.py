@@ -73,6 +73,7 @@ class Event(models.Model):
     location_suburb = models.CharField(max_length=255, default=True)#colonia
     location_neighborhood = models.CharField(max_length=255, default=True)# delegacion
 
+
     # Finished event data
     attendances = models.IntegerField(default=0)
     achieved_goal = models.BooleanField(default=False)
@@ -110,12 +111,12 @@ class EventTier(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "%s %s %s %s %s %s" % (self.name,
-                                      self.event,
-                                      self.price,
-                                      self.image,
-                                      self.created,
-                                      self.modified)
+        return '{} {} {} {} {} {}'.format(self.name,
+                                          self.event,
+                                          self.price,
+                                          self.image,
+                                          self.created,
+                                          self.modified)
 
 
 class EventPhoto(models.Model):
@@ -128,7 +129,7 @@ class EventPhoto(models.Model):
     user = models.ForeignKey(UserProfile)
     event = models.ForeignKey(Event)
     caption = models.CharField(max_length=140, null=True, blank=True)
-    image = models.ImageField(upload_to="event_media")
+    image = models.ImageField(upload_to="static/img/event_media")
     positive_votes = models.IntegerField(default=0)
     negative_votes = models.IntegerField(default=0)
 
@@ -137,11 +138,7 @@ class EventPhoto(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "%s %s %s %s" % (self.user,
-                                self.event,
-                                self.image,
-                                self.positive_votes,
-                                self.negative_votes)
+        return self.event.name
 
 
 class EventComment(models.Model):
@@ -162,10 +159,10 @@ class EventComment(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {}'.format(self.name,
-                                    self.event,
-                                    self.positive_vote,
-                                    self.negative_votes)
+        return "%s %s %s %s" % (self.name,
+                                self.event,
+                                self.positive_vote,
+                                self.negative_votes)
 
 
 class UserVotesPhoto(models.Model):
@@ -184,10 +181,10 @@ class UserVotesPhoto(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {}'.format(self.user,
-                                    self.positive_vote,
-                                    self.created,
-                                    self.modified)
+        return "%s %s %s %s" % (self.user,
+                                self.positive_vote,
+                                self.created,
+                                self.modified)
 
 
 class UserVotesComment(models.Model):

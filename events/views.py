@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from userprofiles.models import UserProfile
 from django.http import HttpResponse
-from events.models import Event, EventCategory, EventTier, Restriction
+from events.models import Event, EventCategory, EventTier, Restriction, EventPhoto
 from django.shortcuts import get_object_or_404
 import random
 
@@ -19,6 +19,15 @@ def events_home(request):
     else:
         events = random.sample(events, len(events))
 
+    events_to_show = []
+    for event in events:
+        photos = EventPhoto.objects.filter(event=event)
+        event_dic = {}
+        event_dic['photo'] = photos[0].image
+        event_dic['event'] = event
+        events_to_show.append(event_dic)
+
+
     top_score = Event.objects.filter(event_completed=True).order_by('score')
     if (len(top_score) > 2):
         top_score = top_score[::-1][:2]
@@ -26,7 +35,7 @@ def events_home(request):
         top_score = top_score[::-1]
 
     context = {
-        'events': events,
+        'events': events_to_show,
         'top_scores': top_score
     }
     # Check if user session has an User Profile entity.
