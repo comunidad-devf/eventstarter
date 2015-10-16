@@ -89,11 +89,11 @@
             {% for top_score in top_scores %}
             <article>
                 <figure>
-                    <img src={% static "img/imgtop.jpg" %} alt="">
+                    <img src="{{ top_score.photo }}" alt="">
                 </figure>
                 <div class="centro">
-                    <h4>Poll Party, Miguel</h4>
-                    <p>En esta fiesta Miguel se puso bien loco y nadie lo podía parar, se desvistió y se lanzó a la alberca</p>
+                    <h4>{{ event.event.name }}</h4>
+                    <p>{{ event.event.description }}</p>
                     <div class=line>
                         <div>
                             <h5>Ranking del evento</h5>
@@ -107,7 +107,7 @@
                         </div>
                         <div>
                             <h5>Organizadores</h5>
-                            <h6>Miguel Nava</h6>
+                            <h6>{{ event.event.organizers }}</h6>
                         </div>
                         <div>
                             <a href="">ver más fotos</a>
@@ -118,7 +118,7 @@
             {% endfor %}
             <article>
                 <figure>
-                    <img src={% static "img/imgtop.jpg" %} alt="">
+                    <img src="{{ top_score.photo }}" alt="">
                 </figure>
                 <div class="centro">
                     <h4>Poll Party, Miguel</h4>

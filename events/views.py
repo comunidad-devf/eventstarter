@@ -28,15 +28,23 @@ def events_home(request):
         events_to_show.append(event_dic)
 
 
-    top_score = Event.objects.filter(event_completed=True).order_by('score')
-    if (len(top_score) > 2):
-        top_score = top_score[::-1][:2]
+    top_scores = Event.objects.filter(event_completed=True).order_by('score')
+    if (len(top_scores) > 2):
+        top_scores = top_scores[::-1][:2]
     else:
-        top_score = top_score[::-1]
+        top_scores = top_scores[::-1]
+
+        top_scores_to_show = []
+    for top_score in top_scores:
+        photos = EventPhoto.objects.filter(event=event)
+        top_score_dic = {}
+        top_score_dic['photo'] = photos[0].image
+        top_score_dic['top_score'] = top_score
+        top_scores_to_show.append(top_score_dic)
 
     context = {
         'events': events_to_show,
-        'top_scores': top_score
+        'top_scores': top_scores_to_show
     }
     # Check if user session has an User Profile entity.
     if request.user.is_authenticated():
