@@ -161,6 +161,20 @@ def event(request, event):
     return render(request, 'events/event.html', context)
 
 
+def fund(request, event):
+    context = {
+        'events': Event.objects.filter(achieved_goal=True)
+    }
+    return render(request, 'events/fund.html', context)
+
+
+def confirm(request, event):
+    context = {
+        'events': Event.objects.filter(achieved_goal=True)
+    }
+    return render(request, 'events/confirm.html', context)
+
+
 def successful_event(request):
     context = {
         'events': Event.objects.filter(achieved_goal=True)

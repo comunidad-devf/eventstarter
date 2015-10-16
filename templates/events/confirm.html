@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+  {% extends "base.html" %}
+  {% block title %}Event{% endblock %}
+  {% load static from staticfiles %}
+  {% block stylesheet %}
+
+  <link rel="stylesheet" type="text/css" href="{% static "css/estilos.css" %}">
+  
+{% endblock stylesheet %}
+
+{% block body %}
+
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
@@ -29,3 +39,4 @@
     </div>
   </body>
 </html>
+{% endblock %}
