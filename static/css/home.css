@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+nav{
+    background-color: white;
+    opacity:.3;
+    text-align: right;
+    height:60px;
+}
+nav ul {
+    color: black;
+    font-weight: bold;
+    vertical-align:middle;
+    height: 15px;
+    list-style: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-75%);
+
+}
+nav li {
+    display: inline;
+}
+nav a{
+    text-decoration: none;
+    color:black;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: lato;
+
+}
+nav a:hover{
+    text-decoration: underline;
+    color:black;
+}
+.home_header{
+    color:white;
+    background-image: url(../img/party.jpg);
+    background-position: center;
+    text-align: center;
+    height:650px;
+}
+header article {
+    position: relative;
+    top: 50%;
+    transform: translateY(-40%);
+}
+header article h3 {
+    margin-bottom: 100px;
+}
+header article button {
+    background-color: #be48d4;
+    opacity:.85;
+    border:.5px solid black;
+    font-family: lato;
+    font-weight: bold;
+    font-size: 18px;
+    padding:7px 10px;
+    margin:0 20px 0 20px;
+}
+#randomp {
+    padding:0 8%;
+}
+#randomp article{
+    border:1px solid black;
+    background-color: #EDEAEA;
+    width:26%;
+    display:inline-block;
+    margin: 30px;
+    text-align: justify;
+    line-height: 14px;
+}
+#randomp article figure img {
+    width:100%;
+}
+#randomp article h4{
+    font-size: 20px;
+    font-family: lato;
+    text-align: left;
+    font-weight: 600;
+}
+.centro {
+    margin:0 20px;
+}
+.line {
+    display:flex;
+    margin-bottom: 5px;
+}
+.line h5 {
+    margin:0;
+}
+.line i {
+    vertical-align: middle;
+}
+.line div {
+    width:33%;
+}
+.line div h5 {
+    font-weight:bold;
+}
+#bestparties{
+    background-color: #C4D1FE;
+    text-align: center;
+}
+#bestparties span {
+    color:purple;
+}
+#bestparties img {
+    width:100%;
+}
+#bestparties article {
+    border:1px solid black;
+    background-color: #EDEAEA;
+    width:40%;
+    display:inline-block;
+    margin: 30px;
+    text-align: justify;
+    line-height: 14px;
+}
+#bestparties article h4{
+    font-size: 20px;
+    font-family: lato;
+    text-align: left;
+    font-weight: 600;
+}
+#wraper {
+    padding: 0 8%;
+}
