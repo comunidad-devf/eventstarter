@@ -3,5 +3,12 @@
 {% block title %}Create Event{% endblock %}
 
 {% block body %}
-	{{event}}
+{%for detail in events%}
+<section>
+	<h1>{{detail.name}}</h1>
+	<figure>
+		<img src="{{detail.image}}">
+	</figure>
+</section>
+{%endfor%}	
 {% endblock %}

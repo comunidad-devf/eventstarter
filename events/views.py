@@ -145,8 +145,7 @@ def event(request, event):
 
 
 def successful_event(request):
-    events = Event.objects.filter(achieved_goal=True)
     context = {
-        'event': events
+        'events': Event.objects.filter(achieved_goal=True)
     }
     return render(request, 'events/successful_event.html', context)
