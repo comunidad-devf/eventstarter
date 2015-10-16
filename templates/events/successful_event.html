@@ -1,16 +1,127 @@
 {% extends "base.html" %}
 
-{% block title %}Eventos pasados{% endblock %}
+{% block title %}Event Starter{% endblock %}
+{% load static from staticfiles %}
+		
+{% block stylesheet %}
+
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+	
+{% endblock stylesheet %}
 
 {% block body %}
-{%for detail in events%}
-<section>
-	<h1>{{detail.name}}</h1>
-	<figure>
-		<img src="{{detail.event_image.url}}">
-	</figure>
-	<p>fiesta de la fecha {{detail.start_date}} a la fecha {{detail.end_date}}</p>
-	<p>Lo recaudado fue ${{detail.goal}}</p>
-</section>
-{%endfor%}	
+
+	<header>
+		<nav>
+            <ul class="container">
+                <li>
+                    <a href="">Crea tu evento </a> |
+                </li>
+                <li>
+                    <a href=""> Regístrate </a> |
+                </li>
+                <li>
+                    <a href=""> Iniciar sesión</a>
+                </li>
+            </ul>
+        </nav>
+		<figure class="image_header"> <img src="{% static "img/fondo.jpg" %}" alt="imagenfondo"/> </figure>		
+	</header>
+    {%for detail in events%}
+	<section>
+		<h1>{{detail.name}}</h1>
+		<figure>
+			<img src="{{detail.event_image.url}}">
+		</figure>
+		<p>fiesta de la fecha {{detail.start_date}} a la fecha {{detail.end_date}}</p>
+		<p>Lo recaudado fue ${{detail.goal}}</p>
+	</section>
+	{%endfor%}
 {% endblock %}
+
+****
+
+
+    <!--
+    
+    <section class=container id="randomp">
+        {% for event in events %}
+        <article>
+            <figure>
+                <img src="{{ event.photo }}" alt="">
+            </figure>
+            <div class="centro">
+                <div>
+                    <h4>{{event.event.name}}</h4>
+                    <p>{{event.event.description}}</p>
+                </div>
+                <div class="line">
+                    <i class="fa fa-map-marker"></i>
+                    <h5>{{event.event.location_name}} {{event.event.location_city}}</h5>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                        aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                        <span class="sr-only">{{event.event.progress}}</span>
+                    </div>
+                </div>
+                <div>
+                    <div></div>
+                </div>
+                <div class="line">
+                    <div>
+                        <h5>{{event.event.progress}}</h5>
+                        <h6>Recaudado</h6>
+                    </div>
+                    <div>
+                        <h5>{{event.event.goal}}</h5>
+                        <h6>Meta</h6>
+                    </div>
+                    <div>
+                        <h5>{{event.event.end_date}}</h5>
+                        <h6>Días restantes</h6>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+    <section id="bestparties">
+        <div class="container"id="wraper">
+            <h2>ASÍ SE VEN LOS EVENTOS EN <span>PARTY EVENTS</span></h2>
+            {% for top_score in top_scores %}
+            <article>
+                <figure>
+                    <img src="{{ top_score.photo }}" alt="">
+                </figure>
+                <div class="centro">
+                    <h4>{{top_score.name}}</h4>
+                    <p>{{top_score.description}}</p>
+                    <div class=line>
+                        <div>
+                            <h5>Ranking</h5>
+                            <div class=line>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Organizadores</h5>
+                            <h6>{{top_score.organizers.name}}</h6>
+                        </div>
+                        <div>
+                            <a href="">ver más fotos</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+-->
