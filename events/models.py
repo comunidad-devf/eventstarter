@@ -18,8 +18,10 @@ class Restriction(models.Model):
 
     def __unicode__(self):
         """Return the name, logo, created time and modified time."""
-        return '{} {} {} {}'.format(self.name, self.logo, self.created,
-                                    self.modified)
+        return "%s %s %s %s" % (self.name,
+                                self.logo,
+                                self.created,
+                                self.modified)
 
 
 class EventCategory(models.Model):
@@ -33,7 +35,7 @@ class EventCategory(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{}'.format(self.name)
+        return "%s" % (self.name)
 
 
 class Event(models.Model):
@@ -68,6 +70,8 @@ class Event(models.Model):
     location_street = models.CharField(max_length=255)
     location_number = models.CharField(max_length=20)
     location_zip_code = models.CharField(max_length=20)
+    location_suburb = models.CharField(max_length=255, default=True)#colonia
+    location_neighborhood = models.CharField(max_length=255, default=True)# delegacion
 
     # Finished event data
     attendances = models.IntegerField(default=0)
@@ -79,13 +83,13 @@ class Event(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {} {} {} {} {}'.format(self.name,
-                                                self.start_date,
-                                                self.end_date,
-                                                self.due_date,
-                                                self.goal,
-                                                self.achieved_goal,
-                                                self.event_completed)
+        return "%s %s %s %s %s %s %s" % (self.name,
+                                         self.start_date,
+                                         self.end_date,
+                                         self.due_date,
+                                         self.goal,
+                                         self.achieved_goal,
+                                         self.event_completed,)
 
 
 class EventTier(models.Model):
@@ -106,12 +110,12 @@ class EventTier(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {} {} {}'.format(self.name,
-                                          self.event,
-                                          self.price,
-                                          self.image,
-                                          self.created,
-                                          self.modified)
+        return "%s %s %s %s %s %s" % (self.name,
+                                      self.event,
+                                      self.price,
+                                      self.image,
+                                      self.created,
+                                      self.modified)
 
 
 class EventPhoto(models.Model):
@@ -133,11 +137,11 @@ class EventPhoto(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {} {}'.format(self.user,
-                                       self.event,
-                                       self.image,
-                                       self.positive_votes,
-                                       self.negative_votes)
+        return "%s %s %s %s" % (self.user,
+                                self.event,
+                                self.image,
+                                self.positive_votes,
+                                self.negative_votes)
 
 
 class EventComment(models.Model):
@@ -202,7 +206,7 @@ class UserVotesComment(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {} {} {}'.format(self.user,
-                                    self.positive_vote,
-                                    self.created,
-                                    self.modified)
+        return "%s %s %s %s" % (self.user,
+                                self.positive_vote,
+                                self.created,
+                                self.modified)

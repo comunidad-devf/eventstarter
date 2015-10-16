@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Event Starter{% endblock %}
-
+{% load static from staticfiles %}
 {% block body %}
     <!--{% if user.is_authenticated %}
         <p>
@@ -20,7 +20,7 @@
             </a>
         </p>
     {% endif %}-->
-    <header>
+    <header class="home_header">
         <nav>
             <ul class="container">
                 <li>
@@ -35,266 +35,117 @@
             </ul>
         </nav>
         <article class="container">
-            <h1>Follow the Party</h1>
             <h3>Busca tu evento, dona, participa</h3>
-            <button type="button">"Crea un evento"</button>
             <button type="button">"Busca un evento"</button>
+            <button type="button">"Crea un evento"</button>
             </form>
         </article>
-        <article class="container">
-            <p>Busca por:</p>
-            <a href="">Zona</a>
-            <a href="">Precio</a>
-        </article>
     </header>
-    <section class=container>
+    <section class=container id="randomp">
+        {% for event in events %}
         <article>
             <figure>
-                <img src="" alt="">
+                <img src="{% static "img/evento.jpg" %}" alt="">
             </figure>
-            <div>
-                <h4>Rock & ROll Party</h4>
-                <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-            </div>
-            <div>
-                <figure>
-                    <img src="" alt="">
-                </figure>
-                <h5>Polanco D.F.</h5>
-            </div>
-            <div class = "Progress">
-                <div></div>
-            </div>
-            <div>
+            <div class="centro">
                 <div>
-                    <h5>$2,150</h5>
-                    <h6>Recaudado</h6>
+                    <h4>{{event.name}}</h4>
+                    <p>{{event.description}}</p>
+                </div>
+                <div class="line">
+                    <i class="fa fa-map-marker"></i>
+                    <h5>{{event.location_name}} {{event.location_city}}</h5>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                        aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                        <span class="sr-only">{{event.progress}}</span>
+                    </div>
                 </div>
                 <div>
-                    <h5>$10,000</h5>
-                    <h6>Meta</h6>
+                    <div></div>
                 </div>
-                <div>
-                    <h5>10</h5>
-                    <h6>Días restantes</h6>
+                <div class="line">
+                    <div>
+                        <h5>{{event.progress}}</h5>
+                        <h6>Recaudado</h6>
+                    </div>
+                    <div>
+                        <h5>{{event.goal}}</h5>
+                        <h6>Meta</h6>
+                    </div>
+                    <div>
+                        <h5>{{event.end_date}}</h5>
+                        <h6>Días restantes</h6>
+                    </div>
                 </div>
             </div>
         </article>
-        <article>
-            <figure>
-                <img src="" alt="">
-            </figure>
-            <div>
-                <h4>Rock & ROll Party</h4>
-                <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-            </div>
-            <div>
-                <figure>
-                    <img src="" alt="">
-                </figure>
-                <h5>Polanco D.F.</h5>
-            </div>
-            <div class = "Progress">
-                <div></div>
-            </div>
-            <div>
-                <div>
-                    <h5>$2,150</h5>
-                    <h6>Recaudado</h6>
-                </div>
-                <div>
-                    <h5>$10,000</h5>
-                    <h6>Meta</h6>
-                </div>
-                <div>
-                    <h5>10</h5>
-                    <h6>Días restantes</h6>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="" alt="">
-            </figure>
-            <div>
-                <h4>Rock & ROll Party</h4>
-                <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-            </div>
-            <div>
-                <figure>
-                    <img src="" alt="">
-                </figure>
-                <h5>Polanco D.F.</h5>
-            </div>
-            <div class = "Progress">
-                <div></div>
-            </div>
-            <div>
-                <div>
-                    <h5>$2,150</h5>
-                    <h6>Recaudado</h6>
-                </div>
-                <div>
-                    <h5>$10,000</h5>
-                    <h6>Meta</h6>
-                </div>
-                <div>
-                    <h5>10</h5>
-                    <h6>Días restantes</h6>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="" alt="">
-            </figure>
-            <div>
-                <h4>Rock & ROll Party</h4>
-                <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-            </div>
-            <div>
-                <figure>
-                    <img src="" alt="">
-                </figure>
-                <h5>Polanco D.F.</h5>
-            </div>
-            <div class = "Progress">
-                <div></div>
-            </div>
-            <div>
-                <div>
-                    <h5>$2,150</h5>
-                    <h6>Recaudado</h6>
-                </div>
-                <div>
-                    <h5>$10,000</h5>
-                    <h6>Meta</h6>
-                </div>
-                <div>
-                    <h5>10</h5>
-                    <h6>Días restantes</h6>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="" alt="">
-            </figure>
-            <div>
-                <h4>Rock & ROll Party</h4>
-                <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-            </div>
-            <div>
-                <figure>
-                    <img src="" alt="">
-                </figure>
-                <h5>Polanco D.F.</h5>
-            </div>
-            <div class = "Progress">
-                <div></div>
-            </div>
-            <div>
-                <div>
-                    <h5>$2,150</h5>
-                    <h6>Recaudado</h6>
-                </div>
-                <div>
-                    <h5>$10,000</h5>
-                    <h6>Meta</h6>
-                </div>
-                <div>
-                    <h5>10</h5>
-                    <h6>Días restantes</h6>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="" alt="">
-            </figure>
-            <div>
-                <h4>Rock & ROll Party</h4>
-                <p>Esta fiesta va a estar bien chingona, todos los de dev.f van a ir y no te la puedes perder</p>
-            </div>
-            <div>
-                <figure>
-                    <img src="" alt="">
-                </figure>
-                <h5>Polanco D.F.</h5>
-            </div>
-            <div class = "Progress">
-                <div></div>
-            </div>
-            <div>
-                <div>
-                    <h5>$2,150</h5>
-                    <h6>Recaudado</h6>
-                </div>
-                <div>
-                    <h5>$10,000</h5>
-                    <h6>Meta</h6>
-                </div>
-                <div>
-                    <h5>10</h5>
-                    <h6>Días restantes</h6>
-                </div>
-            </div>
-        </article>
+        {% endfor %}
     </section>
-    <section class="container">
-        <h2>Así se ven los eventos en <span>Party Events</span></h2>
-        <article>
-            <figure>
-                <img src="" alt="">
-            </figure>
-            <h4>Poll Party, Miguel</h4>
-            <p>En esta fiesta Miguel se puso bien loco y nadie lo podía parar, se desvistió y se lanzó a la alberca</p>
-            <div>
-                <div>
-                    <h5>Ranking del evento</h5>
-                    <div>
-                        <figure><img src="" alt=""></figure>
-                        <figure><img src="" alt=""></figure>
-                        <figure><img src="" alt=""></figure>
-                        <figure><img src="" alt=""></figure>
-                        <figure><img src="" alt=""></figure>
+    <section id="bestparties">
+        <div class="container"id="wraper">
+            <h2>ASÍ SE VEN LOS EVENTOS EN <span>PARTY EVENTS</span></h2>
+            {% for top_score in top_scores %}
+            <article>
+                <figure>
+                    <img src={% static "img/imgtop.jpg" %} alt="">
+                </figure>
+                <div class="centro">
+                    <h4>Poll Party, Miguel</h4>
+                    <p>En esta fiesta Miguel se puso bien loco y nadie lo podía parar, se desvistió y se lanzó a la alberca</p>
+                    <div class=line>
+                        <div>
+                            <h5>Ranking del evento</h5>
+                            <div class=line>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Organizadores</h5>
+                            <h6>Miguel Nava</h6>
+                        </div>
+                        <div>
+                            <a href="">ver más fotos</a>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h5>Organizadores</h5>
-                    <h6>Miguel Nava</h6>
-                </div>
-                <div>
-                    <a href="">ver más fotos</a>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <img src="" alt="">
-            </figure>
-            <h4>Poll Party, Miguel</h4>
-            <p>En esta fiesta Miguel se puso bien loco y nadie lo podía parar, se desvistió y se lanzó a la alberca</p>
-            <div>
-                <div>
-                    <h5>Ranking del evento</h5>
-                    <div>
-                        <figure><img src="" alt=""></figure>
-                        <figure><img src="" alt=""></figure>
-                        <figure><img src="" alt=""></figure>
-                        <figure><img src="" alt=""></figure>
-                        <figure><img src="" alt=""></figure>
+            </article>
+            {% endfor %}
+            <article>
+                <figure>
+                    <img src={% static "img/imgtop.jpg" %} alt="">
+                </figure>
+                <div class="centro">
+                    <h4>Poll Party, Miguel</h4>
+                    <p>En esta fiesta Miguel se puso bien loco y nadie lo podía parar, se desvistió y se lanzó a la alberca</p>
+                    <div class=line>
+                        <div>
+                            <h5>Ranking del evento</h5>
+                            <div class=line>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Organizadores</h5>
+                            <h6>Miguel Nava</h6>
+                        </div>
+                        <div>
+                            <a href="">ver más fotos</a>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h5>Organizadores</h5>
-                    <h6>Miguel Nava</h6>
-                </div>
-                <div>
-                    <a href="">ver más fotos</a>
-                </div>
-            </div>
-        </article>
+            </article>
+
+        </div>
     </section>
     <footer>
 

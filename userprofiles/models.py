@@ -14,6 +14,7 @@ class UserProfile(models.Model):
     birthday = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=15, null=True, blank=True)
     score = models.IntegerField(default=0)
+    credit = models.DecimalField(default=0, max_digits=8, decimal_places=2)
     facebook_url = models.URLField(null=True, blank=True)
     twitter_url = models.URLField(null=True, blank=True)
     fraudulent = models.BooleanField(default=False)
@@ -21,3 +22,16 @@ class UserProfile(models.Model):
     # Meta Data
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return '{} {} {} {} {} {} {} {} {} {}'.format(self.user,
+                                                      self.avatar,
+                                                      self.biography,
+                                                      self.birthday,
+                                                      self.phone,
+                                                      self.score,
+                                                      self.credit,
+                                                      self.facebook_url,
+                                                      self.twitter_url,
+                                                      self.fraudulent,
+                                                      )
