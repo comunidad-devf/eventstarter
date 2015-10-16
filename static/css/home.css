@@ -74,9 +74,14 @@ header article button {
     margin: 30px;
     text-align: justify;
     line-height: 14px;
+    height:500px;
+}
+#randomp article figure {
+    height:250px;
 }
 #randomp article figure img {
     width:100%;
+    vertical-align: middle;
 }
 #randomp article h4{
     font-size: 20px;
